@@ -1,0 +1,122 @@
+.bg-resev {
+    background-color: #478e3b;
+}
+
+.text-resev {
+    color: #478e3b;
+}
+
+.text-resev1 {
+    color: #898e2c;
+}
+
+.w-40 {
+    width: 40%;
+}
+
+.hr-2 {
+    height: 2px;
+}
+
+.navbar-nav > li{
+    padding-left:10px;
+    padding-right:10px;
+}
+
+* {
+    box-sizing: border-box;
+}
+body, html {
+    background: linear-gradient(to right, #bed563, #69a855);
+    margin: 0 auto;
+    padding: 0;
+}
+
+#footer {
+    position:sticky;
+    bottom:0;
+    width:100%;
+    height:50px;   /* Height of the footer */
+    background-color: rgba(160, 254, 107, 0.04);
+}
+
+.img-fluid{
+    width: 50%;
+    height: 50%;
+}
+
+.img-user{
+    width: 100%;
+    height: 30%;
+    border-radius: 50px;
+}
+
+th, td {
+    text-align: center;
+    padding: 15px 10px;
+}
+
+tr{
+    background-color: #a9b52e;
+}
+
+th {
+    background-color: #91b55b;
+    color: white;
+}
+
+html { overflow-y: scroll; }
+
+.jumbotron {
+    background: linear-gradient(to right, #bed563, #69a855);
+    height: 33%;
+}
+
+table {
+    width: 100%;
+    overflow: scroll;
+    text-align: center;
+
+}
+
+table.no-spacing {
+    border-spacing:0; /* Removes the cell spacing via CSS */
+    border-collapse: collapse;  /* Optional - if you don't want to have double border where cells touch */
+}
+
+
+
+.btn.btnMy{
+    color: #eeed38;
+    background: #622272;
+}
+
+.img-front1{
+    width: 100%;
+    height: 40%;
+    border-radius: 50px;
+}
+.img-front2{
+    width: 45%;
+    height: 16%;
+    border-radius: 50px;
+}
+
+.img-login{
+    width: 40%;
+    height: 25%;
+    border-radius: 50px;
+}
+.img-profile{
+    width: 40%;
+    height: 40%;
+    border-radius: 10px;
+}
+
+.img-profile-pic{
+    width: 20%;
+    height: 40%;
+    border-radius: 10px;
+
+}
+

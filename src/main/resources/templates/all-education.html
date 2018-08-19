@@ -1,0 +1,57 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <th:block th:replace="fragments/head"></th:block>
+</head>
+<body>
+<div class="container-fluid">
+    <header>
+        <th:block th:replace="fragments/navbar"></th:block>
+    </header>
+    <main class="main-content" >
+        <br>
+        <h1 class="text-center">Job Category "EDUCATION"</h1>
+        <hr class="bg-resev hr-2"/>
+
+
+        <section>
+            <div>
+                <table >
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Years</th>
+                        <th>Gender</th>
+                        <th>Email</th>
+                        <th>Telephone Number</th>
+                        <th>Current Job</th>
+                        <th>Full Profile</th>
+                    </tr>
+                    <th:block th:each="workerProfile : ${workerProfileEducation}">
+                        <tr style="text-align:center">
+                            <td style="width: 15%;" th:text="${workerProfile.firstName}"></td>
+                            <td style="width: 15%;" th:text="${workerProfile.lastName}"></td>
+                            <td style="width: 10%;" th:text="${workerProfile.age}"></td>
+                            <td style="width: 10%;" th:text="${workerProfile.gender}"></td>
+                            <td style="width: 10%;" th:text="${workerProfile.email}"></td>
+                            <td style="width: 15%;" th:text="${workerProfile.telephoneNumber}"></td>
+                            <td style="width: 15%;" th:text="${workerProfile.currentJob}"></td>
+                            <td>
+                                <button th:onclick="'location.href = \'' + @{/user-details/{id}(id=${workerProfile.id})} + '\''" class="delete">View Full Profile</button>
+                            </td>
+                        </tr>
+                    </th:block>
+                </table>
+                <br>
+                <div class="button-holder d-flex justify-content-around">
+                    <a class="btn btn-secondary btn-lg align-content-center" th:href="@{/home}">Back</a>
+                </div>
+            </div>
+        </section>
+        </form>
+    </main>
+    <th:block th:replace="fragments/footer"></th:block>
+</div>
+</body>
+</html>

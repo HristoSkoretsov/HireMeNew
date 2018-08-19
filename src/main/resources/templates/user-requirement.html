@@ -1,0 +1,131 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <th:block th:replace="fragments/head"></th:block>
+</head>
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+<body>
+<div class="container-fluid">
+    <header>
+        <th:block th:replace="fragments/navbar"></th:block>
+    </header>
+    <main class="main-content">
+        <br>
+        <h1 class="text-center">Worker Requirements</h1>
+        <hr class="bg-resev hr-2"/>
+        <form class="w-40 mx-auto" enctype="multipart/form-data" th:action="@{/user-requirement}" method="POST">
+
+        <div th:object="${workerRequirement}">
+
+            <div class="form-row">
+
+                <div class="form-group col-md-4">
+                    <label for="jobCategory">Job Category</label>
+                    <select class="form-control" id="jobCategory" th:value="${workerRequirement.jobCategory}"
+                            name="jobCategory">
+                        <option selected>ARTS</option>
+                        <option>EDUCATION</option>
+                        <option>ENGINEERING</option>
+                        <option>FINANCE</option>
+                        <option>GOVERNMENT</option>
+                        <option>HEALTH</option>
+                        <option>IT</option>
+                        <option>MANAGEMENT</option>
+                        <option>PLEASURE</option>
+                        <option>SECURITY</option>
+                        <option>SERVICES</option>
+                        <option>OTHER</option>
+                        </select>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="expectedWorkTime">Working Time</label>
+                    <select class="form-control" id="expectedWorkTime" th:value="${workerRequirement.expectedWorkTime}"
+                            name="expectedWorkTime">
+                        <option selected>FOUR_HOURS</option>
+                        <option>EIGHT_HOURS</option>
+                        <option>TWELVE_HOURS</option>
+                        <option>OTHER</option>
+                        </select>
+                </div>
+
+                            <div class="form-group col-md-4">
+                    <label for="expectedJobLocation">Job Location</label>
+                    <select class="form-control" id="expectedJobLocation" th:value="${workerRequirement.expectedJobLocation}"
+                            name="expectedJobLocation">
+                        <option selected>SOFIA_CITY</option>
+                        <option>SOFIA_PROVINCE</option>
+                        <option>PLOVDIV</option>
+                        <option>VARNA</option>
+                        <option>STARA_ZAGORA</option>
+                        <option>RUSE</option>
+                        <option>PERNIK</option>
+                        <option>BLAGOEVGRAD</option>
+                        <option>BURGAS</option>
+                        <option>VELIKO_TARNOVO</option>
+                        <option>PLEVEN</option>
+                        <option>LOVECH</option>
+                        <option>PAZARDZHIK</option>
+                        <option>DOBRICH</option>
+                        <option>HASKOVO</option>
+                        <option>MONTANA</option>
+                        <option>SHUMEN</option>
+                        <option>SILISTRA</option>
+                        <option>RAZGRAD</option>
+                        <option>SLIVEN</option>
+                        <option>SMOLYAN</option>
+                        <option>GABROVO</option>
+                        <option>KYUSTENDIL</option>
+                        <option>KARDZHALI</option>
+                        <option>TARGOVISHTE</option>
+                        <option>VIDIN</option>
+                        <option>VRATSA</option>
+                        <option>YAMBOL</option>
+                        <option>ABROAD</option>
+                        <option>OTHER</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="expectedStartingPosition">Starting Position</label>
+                    <select class="form-control" id="expectedStartingPosition" th:value="${workerRequirement.expectedStartingPosition}"
+                            name="expectedStartingPosition">
+                        <option selected>JUNIOR_LEVEL</option>
+                        <option>MIDDLE_LEVEL</option>
+                        <option>HIGHER_LEVEL</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="expectedSalary">Expected Salary</label>
+                    <input type="number" class="form-control" id="expectedSalary"
+                           th:value="${workerRequirement.expectedSalary}" name="expectedSalary">
+                </div>
+              </div>
+            <div class="form-group">
+                <div class="col-xs-3 text-left">
+                    <label for="additionalRequirements">Additional Requirements</label>
+                </div>
+                <div class="col-xs-9">
+                    <textarea class="form-control" rows="5" id="additionalRequirements" name="additionalRequirements" th:field="*{additionalRequirements}"></textarea>
+                </div>
+            </div>
+            <hr class="bg-resev hr-2"/>
+
+            <div class="button-holder d-flex justify-content-around">
+                <input class="btn btn-outline-success btn-lg" type="submit" value="Edit"/>
+                <a class="btn btn-secondary btn-lg" th:href="@{/home}">Cancel</a>
+            </div>
+        </div>
+        </form>
+    </main>
+    <th:block th:replace="fragments/footer"></th:block>
+</div>
+</body>
+
+</html>

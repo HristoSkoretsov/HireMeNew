@@ -1,0 +1,44 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <th:block th:replace="fragments/head"></th:block>
+</head>
+<body>
+<div class="container-fluid">
+    <header>
+        <th:block th:replace="fragments/navbar"></th:block>
+    </header>
+    <main class="main-content">
+        <h1 class="text-center" th:text="|Hello, Admin - ${username}|"></h1>
+        <hr class="hr-2 bg-resev">
+        <h2 class="text-center">Choose Job Category and find
+            the most appropriate candidate</h2>
+        <hr class="hr-2 bg-resev">
+        <div class="form-row text-center" >
+            <div class="form-group col-md-1">
+                <button type="button"  th:href="@{/order/list}">Warning</button>
+            </div>
+            <div class="form-group col-md-1">
+                <button th:onclick="'location.href = \'' + @{/users-art} + '\''" class="btn btnMy btn-lg">ARTS</button>
+            </div>
+            <div class="form-group col-md-1">
+                <a th:href="@{/order/list}">ARTS</a>
+            </div>
+            <div class="form-group col-md-1">
+                <a th:href="@{/order/list}">ARTS</a>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <img src="https://res.cloudinary.com/hristo/image/upload/v1534614251/photodune-3927883-hiring-now-xs-864x400_c.jpg"
+                 class="img-user" alt="Responsive image">
+        </div>
+
+
+
+
+    </main>
+</div>
+<th:block th:replace="fragments/footer"></th:block>
+</body>
+</html>

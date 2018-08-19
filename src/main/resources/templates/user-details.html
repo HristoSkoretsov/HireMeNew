@@ -1,0 +1,72 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <th:block th:replace="fragments/head"></th:block>
+</head>
+<head>
+    <meta charset="UTF-8">
+    <title>User Profile</title>
+</head>
+<body>
+<div class="container-fluid" th:action="@{/user-details/{id}(id=${workerProfile.id})}">
+    <header>
+        <th:block th:replace="fragments/navbar"></th:block>
+    </header>
+    <th:block th:replace="fragments/user-profile2"></th:block>
+     // TODO DA NAPRAVQ BACK BUTTON V ZAVISIMOST Ot KATeGORIQTA!!!!
+    <!--<div th:if="${workerRequirement.jobCategory} eq 'ARTS'">-->
+        <!--<a class="btn btn-secondary btn-lg align-content-center" th:href="@{/users-art}">Back</a>-->
+    <!--</div>-->
+    <!--<div th:if="${workerRequirement.jobCategory} eq 'EDUCATION'">-->
+        <!--<a class="btn btn-secondary btn-lg align-content-center" th:href="@{/users-education}">Back</a>-->
+    <!--</div>-->
+    <!--<div th:if="${workerRequirement.jobCategory} eq 'ENGINEERING'">-->
+        <!--<a class="btn btn-secondary btn-lg align-content-center" th:href="@{/users-engineering}">Back</a>-->
+    <!--</div>-->
+    <!--<div th:if="${workerRequirement.jobCategory} eq 'FINANCE'">-->
+        <!--<a class="btn btn-secondary btn-lg align-content-center" th:href="@{/users-finance}">Back</a>-->
+    <!--</div>-->
+
+    <th:block th:switch="${workerRequirement.jobCategory}">
+        <div th:case="'ARTS'">
+            <a class="btn btn-secondary btn-lg align-content-center" th:href="@{/users-art}">Back</a>
+        </div>
+        <div th:case="'INVALID'">
+            <!-- print object is not active -->
+        </div>
+        <div th:case="'NEW'">
+            <!-- print object is new and active -->
+        </div>
+    </th:block>
+
+
+        <!--<div class="button-holder d-flex justify-content-around">-->
+            <!--<a class="btn btn-secondary btn-lg align-content-center" th:href="@{/users-art}">Back</a>-->
+        <!--</div>-->
+    <th:block th:replace="fragments/footer"></th:block>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+<!--<h1>Edit Film</h1>-->
+<!--<section>-->
+
+    <!--<div th:action="@{/user-details/{id}(id=${workerProfile.id})}" method="GET">-->
+
+
+            <!--<h3 th:text="${workerProfile.firstName}">Name </h3>-->
+            <!--<h3 th:text="${workerRequirement.expectedJobLocation}">Location </h3>-->
+            <!--<button type="button" th:onclick="'location.href = \'' + @{/} + '\''" class="cancel">Cancel</button>-->
+
+    <!--</div>-->
+<!--</section>-->

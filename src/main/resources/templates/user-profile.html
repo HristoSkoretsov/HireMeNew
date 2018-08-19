@@ -1,0 +1,119 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <th:block th:replace="fragments/head"></th:block>
+</head>
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+<body>
+<div class="container-fluid">
+    <header>
+        <th:block th:replace="fragments/navbar"></th:block>
+    </header>
+    <!--<main class="main-content">-->
+    <main class="main-content">
+
+        <br>
+        <h1 class="text-center">Edit Profile</h1>
+        <hr class="bg-resev hr-2"/>
+
+        <form class="w-40 mx-auto" enctype="multipart/form-data" th:action="@{/user-profile}" method="POST">
+
+            <aside>
+                <div class="text-left">
+                    <img th:src="@{${workerProfile1.image}}" class="img-profile"  onerror="this.onerror=null; this.src='https://res.cloudinary.com/hristo/image/upload/v1534431613/Final_PRofile_Hire_mE.jpg';">
+                </div>
+
+            </aside>
+
+            <div th:object="${workerProfile1}">
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="firstName">First Name</label>
+                        <input type="text" class="form-control" id="firstName"
+                               th:value="${workerProfile1.firstName}" name="firstName">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" class="form-control" id="lastName"
+                               th:value="${workerProfile1.lastName}" name="lastName">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="age">Age</label>
+                        <input type="number" class="form-control" id="age" th:value="${workerProfile1.age}"
+                               name="age">
+                    </div>
+
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="email">Email</label>
+                        <input type="text" class="form-control" id="email" th:value="${workerProfile1.email}"
+                               name="email">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="telephoneNumber">Telephone number</label>
+                        <input type="text" class="form-control" id="telephoneNumber"
+                               th:value="${workerProfile1.telephoneNumber}" name="telephoneNumber">
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label>Gender</label>
+                                       <select class="form-control" id="gender" th:value="${workerProfile1.gender}"
+                                name="gender">
+                            <option>MALE</option>
+                            <option>FEMALE</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="currentJob">Current Job</label>
+                    <input class="form-control input-lg" id="currentJob" type="text" name="currentJob"
+                           th:value="${workerProfile1.currentJob}">
+                </div>
+                <div class="form-group">
+                    <label for="previousJob1">Previous Job №1 </label>
+                    <input class="form-control input-lg" id="previousJob1" type="text" name="previousJob1"
+                           th:value="${workerProfile1.previousJob1}">
+                </div>
+                <div class="form-group">
+                    <label for="previousJob2">Previous Job №2</label>
+                    <input class="form-control input-lg" id="previousJob2" type="text" name="previousJob2"
+                           th:value="${workerProfile1.previousJob2}">
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-3 text-left">
+                        <label for="additionalInformation">Additional information </label>
+                    </div>
+                    <div class="col-xs-9">
+                        <textarea class="form-control" rows="5" id="additionalInformation" name="additionalInformation" th:field="*{additionalInformation}"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="d-flex text-left">
+                    <label for="eventPicture">Profile picture</label>
+                </div>
+                <div class="w-30 mx-auto">
+                    <input type="file"  class="form-control-file" id="eventPicture" name="eventPicture">
+                </div>
+            </div>
+                <!--</div>-->
+            <hr class="bg-resev hr-2"/>
+
+            <div class="button-holder d-flex justify-content-around">
+                <input class="btn btn-outline-success btn-lg" type="submit" value="Edit"/>
+                <a class="btn btn-secondary btn-lg" th:href="@{/home}">Cancel</a>
+            </div>
+        </form>
+    </main>
+    <th:block th:replace="fragments/footer"></th:block>
+</div>
+</body>
+
+</html>

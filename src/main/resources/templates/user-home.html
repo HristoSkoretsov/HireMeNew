@@ -1,0 +1,72 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en">
+<head>
+    <th:block th:replace="fragments/head"></th:block>
+</head>
+<body>
+<div class="container-fluid">
+    <header>
+        <th:block th:replace="fragments/navbar"></th:block>
+    </header>
+    <main class="main-content">
+        <br>
+        <h1 class="text-center" th:text="|You are WELCOME, ${username}|"></h1>
+        <hr class="hr-2 bg-resev">
+        <h2 class="text-center">Choose Job Category and find
+            the most appropriate candidate</h2>
+        <hr class="hr-2 bg-resev">
+        <div class="form-row text-center" >
+            <div class="form-group col-md-2">
+                <button th:onclick="'location.href = \'' + @{/users-art} + '\''" class="btn btnMy btn-lg">ARTS</button>
+            </div>
+            <div class="form-group col-md-2">
+                <button th:onclick="'location.href = \'' + @{/users-education} + '\''" class="btn btnMy btn-lg">EDUCATION</button>
+            </div>
+            <div class="form-group col-md-2">
+                <button th:onclick="'location.href = \'' + @{/users-engineering} + '\''" class="btn btnMy btn-lg">ENGINEERING</button>
+            </div>
+            <div class="form-group col-md-2">
+                <button th:onclick="'location.href = \'' + @{/users-finance} + '\''" class="btn btnMy btn-lg">FINANCE</button>
+            </div>
+            <div class="form-group col-md-2">
+                <button th:onclick="'location.href = \'' + @{/users-government} + '\''" class="btn btnMy btn-lg">GOVERNMENT</button>
+            </div>
+            <div class="form-group col-md-2">
+                <button th:onclick="'location.href = \'' + @{/users-health} + '\''" class="btn btnMy btn-lg">HEALTH</button>
+            </div>
+
+        </div>
+        <div class="form-row text-center" >
+            <div class="form-group col-md-2">
+                <button th:onclick="'location.href = \'' + @{/users-it} + '\''" class="btn btnMy btn-lg">IT</button>
+            </div>
+            <div class="form-group col-md-2">
+                <button th:onclick="'location.href = \'' + @{/users-management} + '\''" class="btn btnMy btn-lg">MANAGEMENT</button>
+            </div>
+            <div class="form-group col-md-2">
+                <button th:onclick="'location.href = \'' + @{/users-pleasure} + '\''" class="btn btnMy btn-lg">PLEASURE</button>
+            </div>
+            <div class="form-group col-md-2">
+                <button th:onclick="'location.href = \'' + @{/users-security} + '\''" class="btn btnMy btn-lg">SECURITY</button>
+            </div>
+            <div class="form-group col-md-2">
+                <button th:onclick="'location.href = \'' + @{/users-service} + '\''" class="btn btnMy btn-lg">SERVICES</button>
+            </div>
+            <div class="form-group col-md-2">
+                <button th:onclick="'location.href = \'' + @{/users-other} + '\''" class="btn btnMy btn-lg">OTHER</button>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+
+            <img src="http://res.cloudinary.com/hristo/image/upload/r_30/v1534614251/photodune-3927883-hiring-now-xs-864x400_c.jpg"
+                 class="img-user" alt="Responsive image">
+
+        </div>
+    </main>
+</div>
+<th:block th:replace="fragments/footer"></th:block>
+</body>
+</html>
