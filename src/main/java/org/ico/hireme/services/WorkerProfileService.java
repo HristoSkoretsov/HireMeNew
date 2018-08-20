@@ -24,4 +24,5 @@ public interface WorkerProfileService {
     Set<WorkerProfileServiceModel> getAllWorkersProfileWithSecurity();
     Set<WorkerProfileServiceModel> getAllWorkersProfileWithServices();
     Set<WorkerProfileServiceModel> getAllWorkersProfileWithOther();
+    Set<WorkerProfileServiceModel> getAllWorkersProfile();
 }

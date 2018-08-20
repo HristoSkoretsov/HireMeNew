@@ -8,14 +8,24 @@
 <div id="delete-wrapper">
     <section class="delete">
         <article>
-            <form th:action="@{/delete}" method="POST">
-                <h4>Are you sure delete your account?</h4>
-                 <button type="submit">Delete</button>
-                <a th:href="@{/}">Cancel</a>
+            <div align="center">
+            <form th:action="@{/delete}" method="POST"><br><br><br><br>
+                <h1 align="center">Are you sure delete your account ?</h1>
+                <hr class="bg-resev hr-2"/>
+
+                <div class="container-fluid">
+                    <img src="https://res.cloudinary.com/hristo/image/upload/v1534798698/Delete_Acoount.png"
+                         class="img-front3" alt="Responsive image">
+                </div>
+                <br>
+                 <button type="submit" class="btn btn-danger btn-lg">Delete</button>
             </form>
+                <a class="btn btn-secondary btn-lg" th:href="@{/home}">Cancel</a>
+         </div>
         </article>
     </section>
 </div>
+
 <th:block th:replace="fragments/footer"></th:block>
 </body>
 </html>

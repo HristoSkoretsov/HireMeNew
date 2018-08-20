@@ -25,4 +25,5 @@ public interface WorkerRequirementService {
     Set<WorkerRequirementServiceModel> getAllWorkersRequirementsWithSecurity();
     Set<WorkerRequirementServiceModel> getAllWorkersRequirementsWithServices();
     Set<WorkerRequirementServiceModel> getAllWorkersRequirementsWithOther();
+    Set<WorkerRequirementServiceModel> getAllWorkersRequirements();
 }

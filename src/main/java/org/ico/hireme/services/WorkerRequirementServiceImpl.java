@@ -143,5 +143,14 @@ public class WorkerRequirementServiceImpl implements WorkerRequirementService  {
                 .collect(Collectors.toUnmodifiableSet());
     }
 
+    @Override
+    public Set<WorkerRequirementServiceModel> getAllWorkersRequirements() {
+        return this.workerRequirementsRepository
+                .findAll()
+                .stream()
+                .map(x -> this.modelMapper.map(x, WorkerRequirementServiceModel.class))
+                .collect(Collectors.toUnmodifiableSet());
+    }
+
 
 }

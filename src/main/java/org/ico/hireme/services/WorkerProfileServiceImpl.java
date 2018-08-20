@@ -169,5 +169,14 @@ public class WorkerProfileServiceImpl implements WorkerProfileService {
                 .collect(Collectors.toUnmodifiableSet());
     }
 
+    @Override
+    public Set<WorkerProfileServiceModel> getAllWorkersProfile() {
+        return this.workerProfileRepository
+                .findAll()
+                .stream()
+                .map(x -> this.modelMapper.map(x, WorkerProfileServiceModel.class))
+                .collect(Collectors.toUnmodifiableSet());
+    }
+
 
 }

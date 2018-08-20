@@ -4,6 +4,7 @@ import org.ico.hireme.domain.entities.User;
 import org.ico.hireme.models.binding.UserRegisterBindingModel;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
+import java.util.Optional;
 import java.util.Set;
 
 public interface UserService extends UserDetailsService {
@@ -16,4 +17,7 @@ public interface UserService extends UserDetailsService {
     void delete(User user);
 
     User getCurrentUser();
+
+    Optional<User> findById(String id);
+
 }

@@ -18,6 +18,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -104,5 +105,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getCurrentUser() {
         return (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    }
+
+    @Override
+    public Optional<User> findById(String id) {
+        return this.userRepository.findById(id);
     }
 }
