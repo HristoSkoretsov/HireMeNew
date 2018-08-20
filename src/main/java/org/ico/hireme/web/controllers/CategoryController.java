@@ -48,7 +48,7 @@ public class CategoryController extends BaseController {
                 .collect(Collectors.toUnmodifiableSet());
         modelAndView.addObject("workerRequirementsArt", workersArtRequirements);
 
-        return this.view("all-arts",modelAndView);
+        return this.view("categories/all-arts",modelAndView);
     }
 
     @GetMapping("/users-education")
@@ -68,7 +68,7 @@ public class CategoryController extends BaseController {
                 .collect(Collectors.toUnmodifiableSet());
         modelAndView.addObject("workerRequirementsEducation", workersEducationRequirements);
 
-        return this.view("all-education",modelAndView);
+        return this.view("categories/all-education",modelAndView);
     }
 
     @GetMapping("/users-engineering")
@@ -88,7 +88,7 @@ public class CategoryController extends BaseController {
                 .collect(Collectors.toUnmodifiableSet());
         modelAndView.addObject("workerRequirementsEngineering", workersEngineeringRequirements);
 
-        return this.view("all-engineering",modelAndView);
+        return this.view("categories/all-engineering",modelAndView);
     }
 
     @GetMapping("/users-finance")
@@ -108,7 +108,7 @@ public class CategoryController extends BaseController {
                 .collect(Collectors.toUnmodifiableSet());
         modelAndView.addObject("workerRequirementsFinance", workersFinanceRequirements);
 
-        return this.view("all-finance",modelAndView);
+        return this.view("categories/all-finance",modelAndView);
     }
 
     @GetMapping("/users-government")
@@ -128,7 +128,7 @@ public class CategoryController extends BaseController {
                 .collect(Collectors.toUnmodifiableSet());
         modelAndView.addObject("workerRequirementsGovernment", workersGovernmentRequirements);
 
-        return this.view("all-government",modelAndView);
+        return this.view("categories/all-government",modelAndView);
     }
 
     @GetMapping("/users-health")
@@ -148,7 +148,7 @@ public class CategoryController extends BaseController {
                 .collect(Collectors.toUnmodifiableSet());
         modelAndView.addObject("workerRequirementsHealth", workersHealthRequirements);
 
-        return this.view("all-health",modelAndView);
+        return this.view("categories/all-health",modelAndView);
     }
 
     @GetMapping("/users-it")
@@ -168,7 +168,7 @@ public class CategoryController extends BaseController {
                 .collect(Collectors.toUnmodifiableSet());
         modelAndView.addObject("workerRequirementsIt", workersItRequirements);
 
-        return this.view("all-it",modelAndView);
+        return this.view("categories/all-it",modelAndView);
     }
 
     @GetMapping("/users-management")
@@ -188,7 +188,7 @@ public class CategoryController extends BaseController {
                 .collect(Collectors.toUnmodifiableSet());
         modelAndView.addObject("workerRequirementsManagement", workersManagementRequirements);
 
-        return this.view("all-management",modelAndView);
+        return this.view("categories/all-management",modelAndView);
     }
 
     @GetMapping("/users-pleasure")
@@ -208,7 +208,7 @@ public class CategoryController extends BaseController {
                 .collect(Collectors.toUnmodifiableSet());
         modelAndView.addObject("workerRequirementsManagement", workersPleasureRequirements);
 
-        return this.view("all-pleasure",modelAndView);
+        return this.view("categories/all-pleasure",modelAndView);
     }
 
     @GetMapping("/users-security")
@@ -228,7 +228,7 @@ public class CategoryController extends BaseController {
                 .collect(Collectors.toUnmodifiableSet());
         modelAndView.addObject("workerRequirementsSecurity", workersSecurityRequirements);
 
-        return this.view("all-security",modelAndView);
+        return this.view("categories/all-security",modelAndView);
     }
 
     @GetMapping("/users-service")
@@ -248,7 +248,7 @@ public class CategoryController extends BaseController {
                 .collect(Collectors.toUnmodifiableSet());
         modelAndView.addObject("workerRequirementsService", workersServiceRequirements);
 
-        return this.view("all-service",modelAndView);
+        return this.view("categories/all-service",modelAndView);
     }
 
     @GetMapping("/users-other")
@@ -268,6 +268,6 @@ public class CategoryController extends BaseController {
                 .collect(Collectors.toUnmodifiableSet());
         modelAndView.addObject("workerRequirementsOther", workersOtherRequirements);
 
-        return this.view("all-other",modelAndView);
+        return this.view("categories/all-other",modelAndView);
     }
 }
