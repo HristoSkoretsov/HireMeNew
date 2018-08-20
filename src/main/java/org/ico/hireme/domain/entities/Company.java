@@ -35,6 +35,8 @@ public class Company {
    @Enumerated(EnumType.STRING)
    private Region region;
 
+   private String additionalInformation;
+
 
 
    public Company() {
@@ -88,5 +90,11 @@ public class Company {
       this.region = region;
    }
 
+   public String getAdditionalInformation() {
+      return additionalInformation;
+   }
 
+   public void setAdditionalInformation(String additionalInformation) {
+      this.additionalInformation = additionalInformation;
+   }
 }

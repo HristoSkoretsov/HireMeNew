@@ -1,5 +1,6 @@
 package org.ico.hireme.web.controllers;
 
+import org.ico.hireme.domain.entities.Company;
 import org.ico.hireme.models.binding.CompanyBindingModel;
 import org.ico.hireme.models.view.CompanyViewModel;
 import org.ico.hireme.services.CloudinaryService;
@@ -10,6 +11,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -48,7 +50,7 @@ public class CompanyController extends BaseController{
         }
         companyBindingModel.setImage(pictureUrl);
         this.companyService.createUser(companyBindingModel);
-        return this.redirect("/");
+        return this.redirect("/home");
     }
 
     @GetMapping("/all-companies")
@@ -63,6 +65,27 @@ public class CompanyController extends BaseController{
         modelAndView.addObject("companies", companies);
         return this.view("all-companies",modelAndView);
     }
+
+    @GetMapping("/delete-company")
+    @PreAuthorize("isAuthenticated()")
+    public ModelAndView deleteCompanies(ModelAndView modelAndView) {
+
+        Set<CompanyViewModel> companies = this.companyService
+                .getAll()
+                .stream()
+                .map(x -> this.modelMapper.map(x, CompanyViewModel.class))
+                .collect(Collectors.toUnmodifiableSet());
+        modelAndView.addObject("companies", companies);
+        return this.view("delete-company",modelAndView);
+    }
+    @GetMapping("/delete-company/{id}")
+    public ModelAndView deleteCompanyProcess(@PathVariable String id) {
+
+        Company company = companyService.findById(id).orElse(null);
+        this.companyService.deleteCompany(company);
+        return this.redirect("/home");
+    }
+
 
 
 

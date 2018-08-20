@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -38,5 +39,15 @@ public class CompanyServiceImpl implements CompanyService{
                 .stream()
                 .map(x -> this.modelMapper.map(x, CompanyServiceModel.class))
                 .collect(Collectors.toUnmodifiableSet());
+    }
+
+    @Override
+    public Optional<Company> findById(String id) {
+        return this.companyRepository.findById(id);
+    }
+
+    @Override
+    public void deleteCompany(Company company) {
+        this.companyRepository.delete(company);
     }
 }

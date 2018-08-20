@@ -13,12 +13,12 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
-public class WorkerProfileImpl implements WorkerProfileService {
+public class WorkerProfileServiceImpl implements WorkerProfileService {
 
     private final WorkerProfileRepository workerProfileRepository;
     private final ModelMapper modelMapper;
 
-    public WorkerProfileImpl(WorkerProfileRepository workerProfileRepository, ModelMapper modelMapper) {
+    public WorkerProfileServiceImpl(WorkerProfileRepository workerProfileRepository, ModelMapper modelMapper) {
         this.workerProfileRepository = workerProfileRepository;
         this.modelMapper = modelMapper;
     }

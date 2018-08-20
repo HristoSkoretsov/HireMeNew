@@ -15,7 +15,7 @@ public class CompanyBindingModel {
 
     private Region region;
 
-
+    private String additionalInformation;
 
     private MultipartFile eventPicture;
 
@@ -68,5 +68,13 @@ public class CompanyBindingModel {
 
     public void setEventPicture(MultipartFile eventPicture) {
         this.eventPicture = eventPicture;
+    }
+
+    public String getAdditionalInformation() {
+        return additionalInformation;
+    }
+
+    public void setAdditionalInformation(String additionalInformation) {
+        this.additionalInformation = additionalInformation;
     }
 }

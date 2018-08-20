@@ -1,0 +1,43 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <th:block th:replace="fragments/head"></th:block>
+</head>
+<body>
+<div class="container-fluid">
+    <header>
+        <th:block th:replace="fragments/navbar"></th:block>
+    </header>
+    <main class="main-content" >
+        <br>
+        <h1 class="text-center">DELETE USER</h1>
+        <hr class="bg-resev hr-2"/>
+        <section>
+            <div>
+                <table >
+                    <tr>
+                        <th>User Name</th>
+                        <th>Delete Button</th>
+                    </tr>
+                    <th:block th:each="user : ${companies}">
+                        <tr style="text-align:center">
+                            <td style="width: 30%;" th:text="${company.companyName}"></td>
+                            <td>
+                                <button th:onclick="'location.href = \'' + @{/delete-user/{id}(id=${user.id})} + '\''" class="delete">Delete Company</button>
+                            </td>
+                        </tr>
+                    </th:block>
+                </table>
+                <br>
+                <div class="button-holder d-flex justify-content-around">
+                    <a class="btn btn-secondary btn-lg align-content-center" th:href="@{/home}">Back</a>
+                </div>
+            </div>
+        </section>
+        </form>
+    </main>
+    <th:block th:replace="fragments/footer"></th:block>
+</div>
+</body>
+</html>

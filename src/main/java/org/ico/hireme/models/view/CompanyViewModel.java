@@ -14,6 +14,10 @@ public class CompanyViewModel {
 
     private Region region;
 
+    private String additionalInformation;
+
+    private String id;
+
     public CompanyViewModel() {
     }
 
@@ -57,4 +61,19 @@ public class CompanyViewModel {
         this.region = region;
     }
 
+    public String getAdditionalInformation() {
+        return additionalInformation;
+    }
+
+    public void setAdditionalInformation(String additionalInformation) {
+        this.additionalInformation = additionalInformation;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 }
