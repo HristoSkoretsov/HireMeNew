@@ -48,7 +48,6 @@ public class WorkerProfileServiceImpl implements WorkerProfileService {
 
             return false;
         }
-
         return true;
     }
 

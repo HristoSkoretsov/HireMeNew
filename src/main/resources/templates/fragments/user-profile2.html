@@ -1,89 +1,92 @@
 <th:block th:fragment="user-profile2">
 
-        <main class="main-content">
+    <main class="main-content">
+        <br>
+        <h1 class="text-center" th:text="${workerProfile.firstName + '   ' + workerProfile.lastName}"></h1>
+        <hr class="bg-resev hr-2"/>
+
+        <div class="text-center">
+            <img th:src="@{${workerProfile.image}}" class="img-profile-pic"
+                 onerror="this.onerror=null; this.src='https://res.cloudinary.com/hristo/image/upload/v1534431613/Final_PRofile_Hire_mE.jpg';">
             <br>
-            <h1 class="text-center" th:text="${workerProfile.firstName + '   ' + workerProfile.lastName}" ></h1>
-            <hr class="bg-resev hr-2"/>
-
-            <div class="text-center">
-                <img th:src="@{${workerProfile.image}}" class="img-profile-pic"  onerror="this.onerror=null; this.src='https://res.cloudinary.com/hristo/image/upload/v1534431613/Final_PRofile_Hire_mE.jpg';">
-                <div>
-                    <br>
-                    <div class="form-row">
-                        <div class="form-group col-md-3">
-                            <h3><mark><label for="age">Age</label></mark></h3>
-                            <h4 id="age" th:text="${workerProfile.age}"></h4>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <h3> <mark> <label for="email">Email</label></mark></h3>
-                            <h4 id="email" th:text="${workerProfile.email}"></h4>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <h3><mark><label for="telephoneNumber">Telephone number</label></mark></h3>
-                            <h4 id="telephoneNumber" th:text="${workerProfile.telephoneNumber}"></h4>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <h3><mark><label for="gender">Gender</label></mark></h3>
-                            <h4 id="gender" th:text="${workerProfile.gender}"></h4>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-4">
-                            <h3><mark>  <label for="currentJob">Current Job</label></mark></h3>
-                            <h4 id="currentJob" th:text="${workerProfile.currentJob}"></h4>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <h3><mark>  <label for="previousJob1">Previous Job</label></mark></h3>
-                            <h4 id="previousJob1" th:text="${workerProfile.previousJob1}"></h4>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <h3> <mark> <label for="previousJob2">Previous Job</label></mark></h3>
-                            <h4 id="previousJob2" th:text="${workerProfile.previousJob2}"></h4>
-                        </div>
-                    </div>
-                    <hr class="bg-resev hr-2"/>
-                    <div class="form-row">
-                        <div class="form-group col-md-12">
-                            <h3><mark>  <label for="additionalInformation">Additional Information</label></mark></h3>
-                            <h4 id="additionalInformation" th:text="${workerProfile.additionalInformation}"></h4>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <br>
-                    <hr class="bg-resev hr-2"/>
-                    <h1 class="text-center">Worker Requirements</h1>
-                    <hr class="bg-resev hr-2"/>
-
-
-                    <div class="form-row">
-                        <div class="form-group col-md-3">
-                            <h3><mark><label for="expectedSalary">Salary</label></mark></h3>
-                            <h4 id="expectedSalary" th:text="${workerRequirement.expectedSalary}"></h4>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <h3> <mark> <label for="expectedJobLocation">Job Location</label></mark></h3>
-                            <h4 id="expectedJobLocation" th:text="${workerRequirement.expectedJobLocation}"></h4>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <h3><mark><label for="expectedWorkTime">Working time</label></mark></h3>
-                            <h4 id="expectedWorkTime" th:text="${workerRequirement.expectedWorkTime}"></h4>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <h3><mark><label for="expectedStartingPosition">Starting position</label></mark></h3>
-                            <h4 id="expectedStartingPosition" th:text="${workerRequirement.expectedStartingPosition}"></h4>
-                        </div>
-                    </div>
-
-                    <hr class="bg-resev hr-2"/>
-
-                    <div class="form-row">
-                        <div class="form-group col-md-12">
-                            <h3><mark>  <label for="additionalRequirements">Additional Requirements</label></mark></h3>
-                            <h4 id="additionalRequirements" th:text="${workerRequirement.additionalRequirements}"></h4>
-                        </div>
-                    </div>
-                </div>
+            <br>
+            <div>
+                <table>
+                    <tr>
+                        <th>Age</th>
+                        <th>Email</th>
+                        <th>Telephone number</th>
+                        <th>Gender</th>
+                        <th>Views</th>
+                    </tr>
+                    <tr style="text-align:center">
+                        <td style="width: 20%;" th:text="${workerProfile.age}"></td>
+                        <td style="width: 20%;" th:text="${workerProfile.email}"></td>
+                        <td style="width: 20%;" th:text="${workerProfile.telephoneNumber}"></td>
+                        <td style="width: 20%;" th:text="${workerProfile.gender}"></td>
+                        <td style="width: 20%;" th:text="${workerProfile.views}"></td>
+                    </tr>
+                </table>
             </div>
-        </main>
+            <br>
+            <div>
+                <table>
+                    <tr>
+                        <th>Current Job</th>
+                        <th>Previous Job 1</th>
+                        <th>Previous Job 2</th>
+                    </tr>
+                    <tr style="text-align:center">
+                        <td style="width: 34%;" th:text="${workerProfile.currentJob}"></td>
+                        <td style="width: 33%;" th:text="${workerProfile.previousJob1}"></td>
+                        <td style="width: 33%;" th:text="${workerProfile.previousJob2}"></td>
+                    </tr>
+                </table>
+            </div>
+            <br>
+            <div>
+                <table>
+                    <tr>
+                        <th>Additional Information</th>
+                    </tr>
+                    <tr style="text-align:center">
+                        <td style="width: 100%;" th:text="${workerProfile.additionalInformation}"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="text-center">
+            <br>
+            <hr class="bg-resev hr-2"/>
+            <h1 class="text-center">Worker Requirements</h1>
+            <hr class="bg-resev hr-2"/>
+            <div>
+                <table>
+                    <tr>
+                        <th>Salary</th>
+                        <th>Job Location</th>
+                        <th>Working Time</th>
+                        <th>Starting position</th>
+                    </tr>
+                    <tr style="text-align:center">
+                        <td style="width: 25%;" th:text="${workerRequirement.expectedSalary}"></td>
+                        <td style="width: 25%;" th:text="${workerRequirement.expectedJobLocation}"></td>
+                        <td style="width: 25%;" th:text="${workerRequirement.expectedWorkTime}"></td>
+                        <td style="width: 25%;" th:text="${workerRequirement.expectedStartingPosition}"></td>
+                    </tr>
+                </table>
+            </div>
+            <br>
+            <div>
+                <table>
+                    <tr>
+                        <th>Additional Information</th>
+                    </tr>
+                    <tr style="text-align:center">
+                        <td style="width: 100%;" th:text="${workerRequirement.additionalRequirements}"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </main>
 </th:block>

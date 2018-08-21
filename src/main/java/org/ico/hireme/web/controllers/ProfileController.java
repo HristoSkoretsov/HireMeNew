@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -30,15 +31,18 @@ public class ProfileController extends BaseController{
     }
 
     @GetMapping("/user-details/{id}")
-    public ModelAndView edit(ModelAndView model, @PathVariable String id) {
+    public ModelAndView userDetails(ModelAndView model, @PathVariable String id) {
 
         WorkerProfile workerProfile = this.workerProfileService.findById(id).orElse(null);
         WorkerRequirement workerRequirement = this.workerRequirementService.findById(id).orElse(null);
-
+        workerProfile.setViews(workerProfile.getViews()+1);
+        this.workerProfileService.saveAndFlush(workerProfile);
         model.addObject("workerProfile",workerProfile);
         model.addObject("workerRequirement",workerRequirement);
 
         return this.view("user-details",model);
     }
+
+
 
 }

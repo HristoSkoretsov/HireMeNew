@@ -63,6 +63,7 @@ public class UserServiceImpl implements UserService {
         userEntity.setAuthorities(authorities);
         WorkerProfile workerProfile = new WorkerProfile();
         workerProfile.setUser(userEntity);
+        workerProfile.setViews(0L);
         WorkerRequirement workerRequirement = new WorkerRequirement();
         workerRequirement.setUser(userEntity);
         this.workerProfileRepository.save(workerProfile);

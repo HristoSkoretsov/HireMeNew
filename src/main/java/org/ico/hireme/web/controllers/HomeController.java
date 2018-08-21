@@ -10,14 +10,14 @@ import java.security.Principal;
 public class HomeController extends BaseController {
 
     @GetMapping("/")
-    public ModelAndView index() {
-        return this.view("index");
+    public ModelAndView index(ModelAndView modelAndView) {
+         return this.view("index");
+
     }
 
     @GetMapping("/home")
     public ModelAndView home(Principal principal, ModelAndView modelAndView) {
         modelAndView.addObject("username", principal.getName());
-
         return this.view("user-home", modelAndView);
     }
 }
