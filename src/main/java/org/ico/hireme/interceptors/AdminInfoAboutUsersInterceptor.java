@@ -9,13 +9,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Component
-public class AdminInfoAboutUsers extends
+public class AdminInfoAboutUsersInterceptor extends
         HandlerInterceptorAdapter {
 
     private final UserRepository userRepository;
 
     @Autowired
-    public AdminInfoAboutUsers(UserRepository userRepository) {
+    public AdminInfoAboutUsersInterceptor(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 

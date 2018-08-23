@@ -37,8 +37,6 @@ public class Company {
 
    private String additionalInformation;
 
-
-
    public Company() {
    }
 

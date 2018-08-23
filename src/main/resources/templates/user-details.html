@@ -14,32 +14,51 @@
         <th:block th:replace="fragments/navbar"></th:block>
     </header>
     <th:block th:replace="fragments/user-profile2"></th:block>
-     // TODO DA NAPRAVQ BACK BUTTON V ZAVISIMOST Ot KATeGORIQTA!!!!
-    <!--<div th:if="${workerRequirement.jobCategory} eq 'ARTS'">-->
-        <!--<a class="btn btn-secondary btn-lg align-content-center" th:href="@{/users-art}">Back</a>-->
-    <!--</div>-->
-    <!--<div th:if="${workerRequirement.jobCategory} eq 'EDUCATION'">-->
-        <!--<a class="btn btn-secondary btn-lg align-content-center" th:href="@{/users-education}">Back</a>-->
-    <!--</div>-->
-    <!--<div th:if="${workerRequirement.jobCategory} eq 'ENGINEERING'">-->
-        <!--<a class="btn btn-secondary btn-lg align-content-center" th:href="@{/users-engineering}">Back</a>-->
-    <!--</div>-->
-    <!--<div th:if="${workerRequirement.jobCategory} eq 'FINANCE'">-->
-        <!--<a class="btn btn-secondary btn-lg align-content-center" th:href="@{/users-finance}">Back</a>-->
-    <!--</div>-->
-
-    <th:block th:switch="${workerRequirement.jobCategory}">
+     <br>
+    <th:block th:switch="${category}">
+        <div class="button-holder d-flex justify-content-around">
         <div th:case="'ARTS'">
             <a class="btn btn-secondary btn-lg align-content-center" th:href="@{/users-art}">Back</a>
         </div>
-        <div th:case="'INVALID'">
-            <!-- print object is not active -->
+        <div th:case="'MANAGEMENT'">
+            <a class="btn btn-secondary btn-lg align-content-center" th:href="@{/users-management}">Back</a>
         </div>
-        <div th:case="'NEW'">
+            <div th:case="'EDUCATION'">
+                <a class="btn btn-secondary btn-lg align-content-center" th:href="@{/users-education}">Back</a>
+            </div>
+            <div th:case="'HEALTH'">
+                <a class="btn btn-secondary btn-lg align-content-center" th:href="@{/users-health}">Back</a>
+            </div>
+            <div th:case="'GOVERNMENT'">
+                <a class="btn btn-secondary btn-lg align-content-center" th:href="@{/users-government}">Back</a>
+            </div>
+            <div th:case="'ENGINEERING'">
+                <a class="btn btn-secondary btn-lg align-content-center" th:href="@{/users-engineering}">Back</a>
+            </div>
+            <div th:case="'FINANCE'">
+                <a class="btn btn-secondary btn-lg align-content-center" th:href="@{/users-finance}">Back</a>
+            </div>
+            <div th:case="'SECURITY'">
+                <a class="btn btn-secondary btn-lg align-content-center" th:href="@{/users-security}">Back</a>
+            </div>
+            <div th:case="'PLEASURE'">
+                <a class="btn btn-secondary btn-lg align-content-center" th:href="@{/users-pleasure}">Back</a>
+            </div>
+            <div th:case="'SERVICES'">
+                <a class="btn btn-secondary btn-lg align-content-center" th:href="@{/users-service}">Back</a>
+            </div>
+            <div th:case="'IT'">
+                <a class="btn btn-secondary btn-lg align-content-center" th:href="@{/users-it}">Back</a>
+            </div>
+            <div th:case="'OTHER'">
+                <a class="btn btn-secondary btn-lg align-content-center" th:href="@{/users-other}">Back</a>
+            </div>
+        </div>
             <!-- print object is new and active -->
-        </div>
-    </th:block>
 
+
+    </th:block>
+</div>
 
         <!--<div class="button-holder d-flex justify-content-around">-->
             <!--<a class="btn btn-secondary btn-lg align-content-center" th:href="@{/users-art}">Back</a>-->

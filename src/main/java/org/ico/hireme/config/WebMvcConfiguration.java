@@ -16,7 +16,7 @@ public class WebMvcConfiguration implements
     private final HandlerInterceptor adminUsersTotal;
 
     @Autowired
-    public WebMvcConfiguration(UserGreetingInterceptor titleInterceptor, @Qualifier("adminInfoAboutUsers") HandlerInterceptor adminUsersTotal) {
+    public WebMvcConfiguration(UserGreetingInterceptor titleInterceptor, @Qualifier("adminInfoAboutUsersInterceptor") HandlerInterceptor adminUsersTotal) {
         this.titleInterceptor = titleInterceptor;
         this.adminUsersTotal = adminUsersTotal;
     }

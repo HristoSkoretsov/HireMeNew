@@ -37,8 +37,10 @@ public class ProfileController extends BaseController{
         WorkerRequirement workerRequirement = this.workerRequirementService.findById(id).orElse(null);
         workerProfile.setViews(workerProfile.getViews()+1);
         this.workerProfileService.saveAndFlush(workerProfile);
+        String category = workerRequirement.getJobCategory().toString();
         model.addObject("workerProfile",workerProfile);
         model.addObject("workerRequirement",workerRequirement);
+        model.addObject("category",category);
 
         return this.view("user-details",model);
     }

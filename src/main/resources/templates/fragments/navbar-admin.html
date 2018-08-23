@@ -2,7 +2,7 @@
     <!--ADMIN-->
 
     <nav  class="navbar navbar-expand-lg navbar-light bg-resev">
-        <a class="navbar-brand text-white" th:href="@{/}">HireME</a>
+        <a class="navbar-brand text-white" th:href="@{/home}">HireME</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -37,7 +37,7 @@
                         <a class="dropdown-item" th:href="@{/delete-company}">Delete Company</a>
                     </div>
                 </li>
-                <li class="nav-item">
+                <li>
                     <a class="nav-link text-light" th:text="|Total users - ${total}|"></a>
                 </li>
 

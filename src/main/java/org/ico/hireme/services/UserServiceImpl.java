@@ -1,25 +1,22 @@
 package org.ico.hireme.services;
 
+import org.ico.hireme.domain.entities.*;
+import org.ico.hireme.repositories.HireMeAppRepository;
 import org.modelmapper.ModelMapper;
 import org.ico.hireme.common.factories.UserRoleFactory;
-import org.ico.hireme.domain.entities.User;
-import org.ico.hireme.domain.entities.UserRole;
-import org.ico.hireme.domain.entities.WorkerProfile;
-import org.ico.hireme.domain.entities.WorkerRequirement;
 import org.ico.hireme.models.binding.UserRegisterBindingModel;
 import org.ico.hireme.repositories.UserRepository;
 import org.ico.hireme.repositories.WorkerProfileRepository;
 import org.ico.hireme.repositories.WorkerRequirementsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -36,8 +33,10 @@ public class UserServiceImpl implements UserService {
 
     private final WorkerRequirementsRepository workerRequirementsRepository;
 
+    private final HireMeAppRepository hireMeAppRepository;
+
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, ModelMapper modelMapper, BCryptPasswordEncoder bCryptPasswordEncoder, UserRoleFactory userRoleFactory, WorkerProfileRepository workerProfileRepository, WorkerRequirementsRepository workerRequirementsRepository) {
+    public UserServiceImpl(UserRepository userRepository, ModelMapper modelMapper, BCryptPasswordEncoder bCryptPasswordEncoder, UserRoleFactory userRoleFactory, WorkerProfileRepository workerProfileRepository, WorkerRequirementsRepository workerRequirementsRepository, HireMeAppRepository hireMeAppRepository) {
         this.userRepository = userRepository;
         this.modelMapper = modelMapper;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
@@ -45,6 +44,7 @@ public class UserServiceImpl implements UserService {
 
         this.workerProfileRepository = workerProfileRepository;
         this.workerRequirementsRepository = workerRequirementsRepository;
+        this.hireMeAppRepository = hireMeAppRepository;
     }
 
     @Override
@@ -111,5 +111,21 @@ public class UserServiceImpl implements UserService {
     @Override
     public Optional<User> findById(String id) {
         return this.userRepository.findById(id);
+    }
+
+    @Scheduled(fixedDelay = 86400000)
+    public void hireMeInfoSchedule() {
+        String date = (new Date()).toString();
+        int totalUsersInHireMe = this.userRepository.findAll().size();
+        HireMeApp hireMeInfo = new HireMeApp();
+        hireMeInfo.setDate(date);
+        hireMeInfo.setTotalRegisteredUsers((long) totalUsersInHireMe);
+        this.hireMeAppRepository.save(hireMeInfo);
+    }
+
+    @Scheduled(fixedDelay = 604800000)
+    public void hireMeInfoDeleteWeeklySchedule() {
+        List<HireMeApp> allInfo = this.hireMeAppRepository.findAll();
+        this.hireMeAppRepository.deleteAll();
     }
 }
