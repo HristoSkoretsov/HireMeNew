@@ -1,9 +1,11 @@
 package org.ico.hireme.web.controllers;
 
+import org.ico.hireme.domain.entities.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 
 @Controller

@@ -59,7 +59,7 @@ public class ApplicationSecurityConfiguration
                     .tokenValiditySeconds(1200)
                 .and()
                 .exceptionHandling()
-                    .accessDeniedPage("/unauthorized")
+                    .accessDeniedPage("/unauthorized");
         ;
     }
 }
