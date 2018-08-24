@@ -5,6 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 import java.util.Set;
 
 @Entity
@@ -18,15 +19,14 @@ public class User implements UserDetails {
             strategy = "org.hibernate.id.UUIDGenerator"
     )
     @Column(name = "id", nullable = false, unique = true, updatable = false)
-    @SQLInjectionSafe
     private String id;
 
     @Column(name = "username", nullable = false, unique = true)
-    @SQLInjectionSafe
+    @Pattern(regexp = "[^<>]+")
     private String username;
 
     @Column(name = "password", nullable = false)
-    @SQLInjectionSafe
+    @Pattern(regexp = "[^<>]+")
     private String password;
 
     private boolean isAccountNonExpired;

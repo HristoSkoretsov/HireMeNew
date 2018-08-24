@@ -2,14 +2,13 @@ package org.ico.hireme.domain.entities;
 
 import com.github.rkpunjal.sqlsafe.SQLInjectionSafe;
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.UniqueElements;
 import org.ico.hireme.domain.enums.Region;
-import org.springframework.lang.Nullable;
+
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -17,7 +16,6 @@ import javax.validation.constraints.Size;
 public class Company {
 
    @Id
-   @SQLInjectionSafe
    @GeneratedValue(generator = "UUID")
    @GenericGenerator(
            name = "UUID",
@@ -28,29 +26,28 @@ public class Company {
 
    @Column(name = "company_name", nullable = false, unique = true)
    @Size(min=1, max=100)
-   @SQLInjectionSafe
    @NotNull
+   @Pattern(regexp = "[^<>]+")
    private String companyName;
 
    @Column(name = "email")
-   @SQLInjectionSafe
    @Size(max = 30)
+   @Pattern(regexp = "[^<>]+")
    private String email;
 
    @Column(name = "telephone_number", nullable = false)
-   @SQLInjectionSafe
    @Size(min = 5, max = 15)
+   @Pattern(regexp = "[0-9-+\\/ ]+")
    private String telephoneNumber;
 
    @Column(name = "image")
-   @SQLInjectionSafe
    private String image;
 
    @Enumerated(EnumType.STRING)
    private Region region;
 
-   @SQLInjectionSafe
    @Size(max = 300)
+   @Pattern(regexp = "[^<>]+")
    private String additionalInformation;
 
    public Company() {
