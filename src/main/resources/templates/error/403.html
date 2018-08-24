@@ -1,12 +1,19 @@
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
 <head>
     <th:block th:replace="fragments/head"></th:block>
 </head>
 <body>
 <div class="container-fluid">
-    <h1 class="text-center text-danger">Error 403: Forbidden</h1>
+    <div align="center">
+        <br><br>
+        <h1 align="center text-danger">This is forbidden area. Watch out or you will not find a job</h1>
+        <hr class="bg-resev hr-2"/>
+        <div class="container-fluid">
+            <img src="https://res.cloudinary.com/hristo/image/upload/v1535136551/error-403-forbidden-.jpg"
+                 class="img-front3" alt="Responsive image">
+        </div>
+        <br>
+    </div>
+    <th:block th:replace="fragments/footer"></th:block>
 </div>
 </body>
 </html>

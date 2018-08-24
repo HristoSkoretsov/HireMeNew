@@ -24,9 +24,9 @@
             <div class="form-row">
 
                 <div class="form-group col-md-4">
-                    <label for="jobCategory">Job Category</label>
+                    <label for="jobCategory">*Job Category</label>
                     <select class="form-control" id="jobCategory" th:value="${workerRequirement.jobCategory}"
-                            name="jobCategory">
+                            name="jobCategory" required>
                         <option selected>ARTS</option>
                         <option>EDUCATION</option>
                         <option>ENGINEERING</option>
@@ -42,9 +42,9 @@
                         </select>
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="expectedWorkTime">Working Time</label>
+                    <label for="expectedWorkTime">*Working Time</label>
                     <select class="form-control" id="expectedWorkTime" th:value="${workerRequirement.expectedWorkTime}"
-                            name="expectedWorkTime">
+                            name="expectedWorkTime" required>
                         <option selected>FOUR_HOURS</option>
                         <option>EIGHT_HOURS</option>
                         <option>TWELVE_HOURS</option>
@@ -53,9 +53,9 @@
                 </div>
 
                             <div class="form-group col-md-4">
-                    <label for="expectedJobLocation">Job Location</label>
+                    <label for="expectedJobLocation">*Job Location</label>
                     <select class="form-control" id="expectedJobLocation" th:value="${workerRequirement.expectedJobLocation}"
-                            name="expectedJobLocation">
+                            name="expectedJobLocation" required>
                         <option selected>SOFIA_CITY</option>
                         <option>SOFIA_PROVINCE</option>
                         <option>PLOVDIV</option>
@@ -91,9 +91,9 @@
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="expectedStartingPosition">Starting Position</label>
+                    <label for="expectedStartingPosition">*Starting Position</label>
                     <select class="form-control" id="expectedStartingPosition" th:value="${workerRequirement.expectedStartingPosition}"
-                            name="expectedStartingPosition">
+                            name="expectedStartingPosition" required>
                         <option selected>JUNIOR_LEVEL</option>
                         <option>MIDDLE_LEVEL</option>
                         <option>HIGHER_LEVEL</option>
@@ -103,6 +103,7 @@
                     <label for="expectedSalary">Expected Salary</label>
                     <input type="number" class="form-control" id="expectedSalary"
                            th:value="${workerRequirement.expectedSalary}" name="expectedSalary">
+                    <small id="salary" class="form-text text-muted">Between 0 and 100000</small>
                 </div>
               </div>
             <div class="form-group">
@@ -112,8 +113,11 @@
                 <div class="col-xs-9">
                     <textarea class="form-control" rows="5" id="additionalRequirements" name="additionalRequirements" th:field="*{additionalRequirements}"></textarea>
                 </div>
+                <small id="addInfoInfo" class="form-text text-muted">Between 0 and 400 symbols</small>
             </div>
             <hr class="bg-resev hr-2"/>
+
+            <h6 class="text-left">Fields with * are required</h6>
 
             <div class="button-holder d-flex justify-content-around">
                 <input class="btn btn-outline-success btn-lg" type="submit" value="Edit"/>

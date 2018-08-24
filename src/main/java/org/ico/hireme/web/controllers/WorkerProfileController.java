@@ -50,12 +50,12 @@ public class WorkerProfileController extends BaseController {
         WorkerProfile workerProfile = workerProfileService.findById(this.userService.getCurrentUser().getId()).orElse(null);
         assert workerProfile != null;
 
-        String pictureUrl = this.cloudinaryService.uploadImage(workerProfileBindingModel.getEventPicture());
+        try {
 
-        if (pictureUrl == null) {
-            throw new IllegalArgumentException("Event Picture upload failed.");
+        if (!workerProfileBindingModel.getEventPicture().isEmpty()) {
+            String pictureUrl = this.cloudinaryService.uploadImage(workerProfileBindingModel.getEventPicture());
+            workerProfile.setImage(pictureUrl);
         }
-        workerProfile.setImage(pictureUrl);
         workerProfile.setFirstName(worker.getFirstName());
         workerProfile.setCurrentJob(worker.getCurrentJob());
         workerProfile.setEmail(worker.getEmail());
@@ -67,6 +67,9 @@ public class WorkerProfileController extends BaseController {
         workerProfile.setLastName(worker.getLastName());
         workerProfile.setTelephoneNumber(worker.getTelephoneNumber());
         workerProfileService.saveAndFlush(workerProfile);
-        return this.redirect("/home");
+        return this.redirect("/home"); }
+        catch (Exception e){
+           return this.view("error/user-profile-error");
+        }
     }
 }

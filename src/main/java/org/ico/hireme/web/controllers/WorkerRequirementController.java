@@ -43,6 +43,7 @@ public class WorkerRequirementController extends BaseController {
 
         WorkerRequirement workerRequirement = workerRequirementService.findById(this.userService.getCurrentUser().getId()).orElse(null);
         assert workerRequirement != null;
+        try{
         workerRequirement.setJobCategory(worker.getJobCategory());
         workerRequirement.setExpectedJobLocation(worker.getExpectedJobLocation());
         workerRequirement.setExpectedWorkTime(worker.getExpectedWorkTime());
@@ -50,7 +51,10 @@ public class WorkerRequirementController extends BaseController {
         workerRequirement.setExpectedSalary(worker.getExpectedSalary());
         workerRequirement.setAdditionalRequirements(worker.getAdditionalRequirements());
         workerRequirementService.saveAndFlush(workerRequirement);
-        return this.redirect("/home");
+        return this.redirect("/home");}
+        catch (Exception e){
+            return this.view("error/user-requirement-error");
+        }
     }
 }
 

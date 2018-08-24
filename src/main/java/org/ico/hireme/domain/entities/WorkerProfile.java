@@ -2,9 +2,11 @@ package org.ico.hireme.domain.entities;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.ico.hireme.domain.enums.Gender;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+
 
 @Entity
 @Table(name = "worker_profiles")
@@ -21,20 +23,27 @@ public class WorkerProfile {
 
     @Column(name = "first_name")
     @Size(min = 2, max = 15)
+//    @Pattern(regexp = "[^<>]+")
     private String firstName;
 
     @Column(name = "last_name")
     @Size(min = 2, max = 15)
+    //@Pattern(regexp = "[^<>]+")
     private String lastName;
 
-    //@Digits(integer=3, fraction=0)
+
     private Integer age;
 
-    @Size(min = 2, max = 50)
+    @Size(max = 50)
+    //@Pattern(regexp = "[^<>]+")
+    @Nullable
     private String email;
 
     private String image;
 
+    //@Pattern(regexp = "[0-9\\-+\\/ \\\\]+")
+    @Size(max = 15)
+    @Column(name = "telephone_number", nullable = true)
     private String telephoneNumber;
 
     private Long views = 0L;
@@ -42,12 +51,22 @@ public class WorkerProfile {
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
+    @Size(max = 100)
+    //@Pattern(regexp = "[^<>]+")
+    @Nullable
     private String currentJob;
 
+    @Size(max = 100)
+    //@Pattern(regexp = "^[^<>]+$")
     private String previousJob1;
+
+    @Size(max = 100)
+    //@Pattern(regexp = "[^<>]+")
 
     private String previousJob2;
 
+    @Size(max = 400)
+    //@Pattern(regexp = "[^<>]+")
     private String additionalInformation;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
