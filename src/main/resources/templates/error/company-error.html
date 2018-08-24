@@ -1,0 +1,24 @@
+<head>
+    <th:block th:replace="fragments/head"></th:block>
+</head>
+<body>
+<div class="container-fluid">
+    <header>
+        <th:block th:replace="fragments/navbar"></th:block>
+    </header>
+    <div align="center">
+        <br><br>
+            <h1 align="center">Company's name is busy or you do not observe the specified restrictions. Watch more or you will not find a job</h1>
+            <hr class="bg-resev hr-2"/>
+            <div class="container-fluid">
+                <img src="https://res.cloudinary.com/hristo/image/upload/v1535121316/something-gone-wrong.jpg"
+                     class="img-front3" alt="Responsive image">
+            </div>
+            <br>
+
+        <a class="btn btn-secondary btn-lg" th:href="@{/create-company}">Back</a>
+    </div>
+    <th:block th:replace="fragments/footer"></th:block>
+</div>
+</body>
+</html>

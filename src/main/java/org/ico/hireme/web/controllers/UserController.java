@@ -50,20 +50,24 @@ public class UserController extends BaseController {
 
     @PostMapping("/register")
     @PreAuthorize("isAnonymous()")
-      public ModelAndView registerConfirm(@ModelAttribute UserRegisterBindingModel userRegisterBindingModel, @RequestParam(name = "g-recaptcha-response") String gRecaptchaResponse, HttpServletRequest request) {
+    public ModelAndView registerConfirm(@ModelAttribute UserRegisterBindingModel userRegisterBindingModel, @RequestParam(name = "g-recaptcha-response") String gRecaptchaResponse, HttpServletRequest request) {
 
-        if(this.recaptchaService
+        if (this.recaptchaService
                 .verifyRecaptcha(request.getRemoteAddr()
                         , gRecaptchaResponse) == null) {
-            return this.view("register");
+            return this.view("/register");
         }
 
         if (!userRegisterBindingModel.getPassword()
                 .equals(userRegisterBindingModel.getConfirmPassword())) {
-            return this.view("register");
+            return this.view("error/user-error");
         }
-        this.userService.createUser(userRegisterBindingModel);
-        return this.redirect("/login");
+        try {
+            this.userService.createUser(userRegisterBindingModel);
+            return this.redirect("/login");
+        } catch (Exception e) {
+            return this.view("error/user-error");
+        }
     }
 
     @GetMapping("/delete")
@@ -94,11 +98,11 @@ public class UserController extends BaseController {
         Set<WorkerProfileServiceModel> workerProfile = this.workerProfileService.getAllWorkersProfile();
         Set<WorkerRequirementServiceModel> workerRequirement = this.workerRequirementService.getAllWorkersRequirements();
 
-        model.addObject("allUsers",allUsers);
-        model.addObject("workerProfile",workerProfile);
-        model.addObject("workerRequirement",workerRequirement);
+        model.addObject("allUsers", allUsers);
+        model.addObject("workerProfile", workerProfile);
+        model.addObject("workerRequirement", workerRequirement);
 
-        return this.view("delete-user",model);
+        return this.view("delete-user", model);
     }
 
     @PostMapping("/delete-user/{id}")

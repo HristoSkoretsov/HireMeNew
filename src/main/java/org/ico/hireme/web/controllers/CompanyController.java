@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
@@ -20,7 +21,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Controller
-public class CompanyController extends BaseController{
+public class CompanyController extends BaseController {
 
     private final CompanyService companyService;
     private final CloudinaryService cloudinaryService;
@@ -43,13 +44,16 @@ public class CompanyController extends BaseController{
     @PreAuthorize("isAuthenticated()")
     public ModelAndView createProcess(ModelAndView model, @ModelAttribute CompanyBindingModel companyBindingModel) throws IOException {
 
-        String pictureUrl = this.cloudinaryService.uploadImage(companyBindingModel.getEventPicture());
-
-        if (pictureUrl == null) {
-            throw new IllegalArgumentException("Event Picture upload failed.");
+        if (!companyBindingModel.getEventPicture().isEmpty()) {
+            String pictureUrl = this.cloudinaryService.uploadImage(companyBindingModel.getEventPicture());
+            companyBindingModel.setImage(pictureUrl);
         }
-        companyBindingModel.setImage(pictureUrl);
-        this.companyService.createUser(companyBindingModel);
+        try {
+            this.companyService.createUser(companyBindingModel);
+
+        } catch (Exception e) {
+            return this.view("error/company-error");
+        }
         return this.redirect("/home");
     }
 
@@ -63,7 +67,7 @@ public class CompanyController extends BaseController{
                 .map(x -> this.modelMapper.map(x, CompanyViewModel.class))
                 .collect(Collectors.toUnmodifiableSet());
         modelAndView.addObject("companies", companies);
-        return this.view("all-companies",modelAndView);
+        return this.view("all-companies", modelAndView);
     }
 
     @GetMapping("/delete-company")
@@ -76,8 +80,9 @@ public class CompanyController extends BaseController{
                 .map(x -> this.modelMapper.map(x, CompanyViewModel.class))
                 .collect(Collectors.toUnmodifiableSet());
         modelAndView.addObject("companies", companies);
-        return this.view("delete-company",modelAndView);
+        return this.view("delete-company", modelAndView);
     }
+
     @GetMapping("/delete-company/{id}")
     @PreAuthorize("isAuthenticated()")
     public ModelAndView deleteCompanyProcess(@PathVariable String id) {
@@ -86,8 +91,6 @@ public class CompanyController extends BaseController{
         this.companyService.deleteCompany(company);
         return this.redirect("/home");
     }
-
-
 
 
 }

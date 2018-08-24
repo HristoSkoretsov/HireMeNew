@@ -28,7 +28,7 @@
                     <th:block th:each="company : ${companies}">
                         <tr style="text-align:center">
                             <td style="width:100px; height:150px;">
-                            <img th:src="@{${company.image}}" class="img-fluid"></td>
+                            <img th:src="@{${company.image}}" class="img-fluid" onerror="this.onerror=null; this.src='https://res.cloudinary.com/hristo/image/upload/v1535115197/company-logo.jpg';"></td>
                             <td style="width: 15%;" th:text="${company.companyName}"></td>
                             <td style="width: 10%;" th:text="${company.region}"></td>
                             <td style="width: 13%;" th:text="${company.email}"></td>

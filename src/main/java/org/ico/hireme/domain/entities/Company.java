@@ -1,9 +1,15 @@
 package org.ico.hireme.domain.entities;
 
+import com.github.rkpunjal.sqlsafe.SQLInjectionSafe;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.UniqueElements;
 import org.ico.hireme.domain.enums.Region;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -11,6 +17,7 @@ import javax.validation.constraints.Size;
 public class Company {
 
    @Id
+   @SQLInjectionSafe
    @GeneratedValue(generator = "UUID")
    @GenericGenerator(
            name = "UUID",
@@ -19,22 +26,31 @@ public class Company {
    @Column(name = "id", nullable = false, unique = true, updatable = false)
    private String id;
 
-   @Column(name = "company_name", nullable = false)
-   @Size(min=0, max=100)
+   @Column(name = "company_name", nullable = false, unique = true)
+   @Size(min=1, max=100)
+   @SQLInjectionSafe
+   @NotNull
    private String companyName;
 
    @Column(name = "email")
+   @SQLInjectionSafe
+   @Size(max = 30)
    private String email;
 
    @Column(name = "telephone_number", nullable = false)
+   @SQLInjectionSafe
+   @Size(min = 5, max = 15)
    private String telephoneNumber;
 
    @Column(name = "image")
+   @SQLInjectionSafe
    private String image;
 
    @Enumerated(EnumType.STRING)
    private Region region;
 
+   @SQLInjectionSafe
+   @Size(max = 300)
    private String additionalInformation;
 
    public Company() {

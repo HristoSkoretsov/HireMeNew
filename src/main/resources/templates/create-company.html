@@ -22,16 +22,19 @@
 
                <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="companyName">Company Name</label>
-                    <input type="text" class="form-control" id="companyName" name="companyName">
+                    <label for="companyName">*Company Name</label>
+                    <input type="text" class="form-control" id="companyName" name="companyName" aria-describedby="companyName" required>
+                    <small id="companyNameHelp" class="form-text text-muted">Between 1 and 100 symbols</small>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="email">Company Email</label>
-                    <input type="text" class="form-control" id="email" name="email">
+                    <input type="email" class="form-control" id="email" name="email">
+                    <small id="emailHelp" class="form-text text-muted">Between 1 and 100 symbols</small>
                 </div>
                    <div class="form-group col-md-6">
-                       <label for="telephoneNumber">Telephone Number</label>
-                       <input type="text" class="form-control" id="telephoneNumber" name="telephoneNumber">
+                       <label for="telephoneNumber">*Telephone Number</label>
+                       <input type="text" class="form-control" id="telephoneNumber" name="telephoneNumber" aria-describedby="telephoneNumber" required>
+                       <small id="telephoneNumberHelp" class="form-text text-muted">Between 5 and 15 symbols</small>
                    </div>
                    <div class="form-group col-md-6">
                        <label for="region">Company Location</label>
@@ -79,17 +82,19 @@
                 <div class="col-xs-9">
                     <textarea class="form-control" rows="5" id="additionalInformation" name="additionalInformation" ></textarea>
                 </div>
+                <small id="addInfoHelp" class="form-text text-muted">Between 0 and 300 symbols</small>
             </div>
             <hr class="bg-resev hr-2"/>
             <div class="form-group">
                 <div class="d-flex text-left">
-                    <label for="eventPicture">Company Logo</label>
+                    <label for="eventPicture">Company's Logo</label>
                 </div>
                 <div class="w-30 mx-auto">
                     <input type="file"  class="form-control-file" id="eventPicture" name="eventPicture">
                 </div>
             </div>
             <hr class="bg-resev hr-2"/>
+            <h6 class="text-left">Fields with * are required</h6>
             <div class="button-holder d-flex justify-content-around">
                 <input class="btn btn-outline-success btn-lg" type="submit" value="Create"/>
                 <a class="btn btn-secondary btn-lg" th:href="@{/}">Cancel</a>
