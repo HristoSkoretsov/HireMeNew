@@ -8,6 +8,7 @@ import org.ico.hireme.services.UserService;
 import org.ico.hireme.services.WorkerProfileService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -33,6 +34,7 @@ public class WorkerProfileController extends BaseController {
     }
 
     @GetMapping("/user-profile")
+    @PreAuthorize("isAuthenticated()")
     public ModelAndView add(ModelAndView modelAndView) {
         WorkerProfileViewModel workerProfile1 = this.modelMapper.map(this.workerProfileService.getWorkerProfile(), WorkerProfileViewModel.class);
         WorkerProfileBindingModel workerProfileBindingModel = this.modelMapper.map(this.workerProfileService.getWorkerProfile(), WorkerProfileBindingModel.class);
@@ -42,6 +44,7 @@ public class WorkerProfileController extends BaseController {
     }
 
     @PostMapping("/user-profile")
+    @PreAuthorize("isAuthenticated()")
     public ModelAndView editProfile(WorkerProfile worker, @ModelAttribute WorkerProfileBindingModel workerProfileBindingModel) throws IOException {
 
         WorkerProfile workerProfile = workerProfileService.findById(this.userService.getCurrentUser().getId()).orElse(null);

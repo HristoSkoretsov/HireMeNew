@@ -26,6 +26,5 @@ public class WebMvcConfiguration implements
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(this.titleInterceptor);
         registry.addInterceptor(this.adminUsersTotal);
-
     }
 }

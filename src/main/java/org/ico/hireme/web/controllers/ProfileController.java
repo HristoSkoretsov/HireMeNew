@@ -7,6 +7,7 @@ import org.ico.hireme.services.WorkerProfileService;
 import org.ico.hireme.services.WorkerRequirementService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,6 +32,7 @@ public class ProfileController extends BaseController{
     }
 
     @GetMapping("/user-details/{id}")
+    @PreAuthorize("isAuthenticated()")
     public ModelAndView userDetails(ModelAndView model, @PathVariable String id) {
 
         WorkerProfile workerProfile = this.workerProfileService.findById(id).orElse(null);

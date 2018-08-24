@@ -62,6 +62,7 @@ public class WorkerRequirementServiceImpl implements WorkerRequirementService  {
                 .map(x -> this.modelMapper.map(x, WorkerRequirementServiceModel.class))
                 .collect(Collectors.toUnmodifiableSet());
     }
+
     @Override
     public Set<WorkerRequirementServiceModel> getAllWorkersRequirementsWithFinance() {
         return this.workerRequirementsRepository

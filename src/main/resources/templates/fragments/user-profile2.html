@@ -1,10 +1,8 @@
 <th:block th:fragment="user-profile2">
-
     <main class="main-content">
         <br>
         <h1 class="text-center" th:text="${workerProfile.firstName + '   ' + workerProfile.lastName}"></h1>
         <hr class="bg-resev hr-2"/>
-
         <div class="text-center">
             <img th:src="@{${workerProfile.image}}" class="img-profile-pic"
                  onerror="this.onerror=null; this.src='https://res.cloudinary.com/hristo/image/upload/v1534431613/Final_PRofile_Hire_mE.jpg';">

@@ -2,16 +2,13 @@ package org.ico.hireme.models.service;
 
 import org.ico.hireme.domain.entities.User;
 import org.ico.hireme.domain.enums.Gender;
-import org.ico.hireme.domain.enums.JobCategory;
 
 public class WorkerProfileServiceModel {
     private String firstName;
 
     private String lastName;
 
-
     private Integer age;
-
 
     private String email;
 
@@ -23,15 +20,11 @@ public class WorkerProfileServiceModel {
 
     private Gender gender;
 
-
     private String currentJob;
-
 
     private String previousJob1;
 
-
     private String previousJob2;
-
 
     private String additionalInformation;
 

@@ -79,6 +79,7 @@ public class CompanyController extends BaseController{
         return this.view("delete-company",modelAndView);
     }
     @GetMapping("/delete-company/{id}")
+    @PreAuthorize("isAuthenticated()")
     public ModelAndView deleteCompanyProcess(@PathVariable String id) {
 
         Company company = companyService.findById(id).orElse(null);

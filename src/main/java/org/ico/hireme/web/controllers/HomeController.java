@@ -1,6 +1,7 @@
 package org.ico.hireme.web.controllers;
 
 import org.ico.hireme.domain.entities.User;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -17,6 +18,7 @@ public class HomeController extends BaseController {
 
     }
 
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/home")
     public ModelAndView home(Principal principal, ModelAndView modelAndView) {
         modelAndView.addObject("username", principal.getName());

@@ -6,6 +6,7 @@ import org.ico.hireme.models.binding.WorkerRequirementBindingModel;
 import org.ico.hireme.services.UserService;
 import org.ico.hireme.services.WorkerRequirementService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,6 +26,7 @@ public class WorkerRequirementController extends BaseController {
     }
 
     @GetMapping("/user-requirement")
+    @PreAuthorize("isAuthenticated()")
     public ModelAndView add(ModelAndView modelAndView) {
 
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -36,6 +38,7 @@ public class WorkerRequirementController extends BaseController {
     }
 
     @PostMapping("/user-requirement")
+    @PreAuthorize("isAuthenticated()")
     public ModelAndView editProfile(WorkerRequirementBindingModel worker) {
 
         WorkerRequirement workerRequirement = workerRequirementService.findById(this.userService.getCurrentUser().getId()).orElse(null);

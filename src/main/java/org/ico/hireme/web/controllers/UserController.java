@@ -67,12 +67,14 @@ public class UserController extends BaseController {
     }
 
     @GetMapping("/delete")
+    @PreAuthorize("isAuthenticated()")
     public ModelAndView delete(ModelAndView model) {
         model.addObject("user", this.userService.getCurrentUser());
         return this.view("user-delete", model);
     }
 
     @PostMapping("/delete")
+    @PreAuthorize("isAuthenticated()")
     public ModelAndView deleteProfile(ModelAndView model, HttpSession session) {
         WorkerProfile workerProfile = this.workerProfileService.findById(this.userService.getCurrentUser().getId()).orElse(null);
         WorkerRequirement workerRequirement = this.workerRequirementService.findById(this.userService.getCurrentUser().getId()).orElse(null);
@@ -85,6 +87,7 @@ public class UserController extends BaseController {
     }
 
     @GetMapping("/delete-user")
+    @PreAuthorize("isAuthenticated()")
     public ModelAndView deleteUser(ModelAndView model) {
         Set<User> allUsers = this.userService.getAllUsers();
 
@@ -99,6 +102,7 @@ public class UserController extends BaseController {
     }
 
     @PostMapping("/delete-user/{id}")
+    @PreAuthorize("isAuthenticated()")
     public ModelAndView deleteUserProcess(@PathVariable String id) {
 
         WorkerProfile workerProfile = this.workerProfileService.findById(id).orElse(null);

@@ -1,7 +1,6 @@
 package org.ico.hireme.repositories;
 
 import org.ico.hireme.domain.entities.WorkerRequirement;
-import org.ico.hireme.models.service.WorkerRequirementServiceModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -14,7 +13,6 @@ public interface WorkerRequirementsRepository extends JpaRepository<WorkerRequir
 
     @Override
     void delete(WorkerRequirement workerRequirement);
-
 
     @Query(
             value = "SELECT * FROM worker_requirements AS wp\n" +

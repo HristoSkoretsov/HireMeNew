@@ -9,9 +9,13 @@ import java.util.Optional;
 import java.util.Set;
 
 public interface CompanyService {
+
     boolean createUser(CompanyBindingModel user);
+
     Set<CompanyServiceModel> getAll();
+
     Optional<Company> findById(String id);
+
     void deleteCompany(Company company);
 
 }

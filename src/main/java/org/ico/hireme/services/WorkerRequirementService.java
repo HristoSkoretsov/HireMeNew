@@ -14,16 +14,28 @@ public interface WorkerRequirementService {
     void delete(WorkerRequirement workerRequirement);
 
     Set<WorkerRequirementServiceModel> getAllWorkersRequirementsWithArts();
+
     Set<WorkerRequirementServiceModel> getAllWorkersRequirementsWithEducation();
+
     Set<WorkerRequirementServiceModel> getAllWorkersRequirementsWithEngineering();
+
     Set<WorkerRequirementServiceModel> getAllWorkersRequirementsWithFinance();
+
     Set<WorkerRequirementServiceModel> getAllWorkersRequirementsWithGovernment();
+
     Set<WorkerRequirementServiceModel> getAllWorkersRequirementsWithHealth();
+
     Set<WorkerRequirementServiceModel> getAllWorkersRequirementsWithIt();
+
     Set<WorkerRequirementServiceModel> getAllWorkersRequirementsWithManagement();
+
     Set<WorkerRequirementServiceModel> getAllWorkersRequirementsWithPleasure();
+
     Set<WorkerRequirementServiceModel> getAllWorkersRequirementsWithSecurity();
+
     Set<WorkerRequirementServiceModel> getAllWorkersRequirementsWithServices();
+
     Set<WorkerRequirementServiceModel> getAllWorkersRequirementsWithOther();
+
     Set<WorkerRequirementServiceModel> getAllWorkersRequirements();
 }

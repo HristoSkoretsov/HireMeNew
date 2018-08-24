@@ -6,6 +6,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class AccessController extends BaseController {
+
     @GetMapping("/unauthorized")
     public ModelAndView unauthorized() {
         return this.view("error/unauthorized");
