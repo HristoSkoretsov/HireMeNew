@@ -52,11 +52,11 @@ public class UserController extends BaseController {
     @PreAuthorize("isAnonymous()")
     public ModelAndView registerConfirm(@ModelAttribute UserRegisterBindingModel userRegisterBindingModel, @RequestParam(name = "g-recaptcha-response") String gRecaptchaResponse, HttpServletRequest request) {
 
-//        if (this.recaptchaService
-//                .verifyRecaptcha(request.getRemoteAddr()
-//                        , gRecaptchaResponse) == null) {
-//            return this.view("/register");
-//        }
+        if (this.recaptchaService
+                .verifyRecaptcha(request.getRemoteAddr()
+                        , gRecaptchaResponse) == null) {
+            return this.view("/register");
+        }
 
         if (!userRegisterBindingModel.getPassword()
                 .equals(userRegisterBindingModel.getConfirmPassword())) {
