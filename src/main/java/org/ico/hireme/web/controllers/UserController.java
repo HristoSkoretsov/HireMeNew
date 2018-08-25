@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 import java.util.Set;
 
 @Controller
@@ -62,12 +63,16 @@ public class UserController extends BaseController {
                 .equals(userRegisterBindingModel.getConfirmPassword())) {
             return this.view("error/user-error");
         }
-        try {
+
+        Set<User> users = this.userService.getAllUsers();
+        for (User u: users) {
+            if(u.getUsername().equals(userRegisterBindingModel.getUsername())){
+                return this.view("error/user-error");
+            }
+        }
             this.userService.createUser(userRegisterBindingModel);
             return this.redirect("/login");
-        } catch (Exception e) {
-            return this.view("error/user-error");
-        }
+
     }
 
     @GetMapping("/delete")

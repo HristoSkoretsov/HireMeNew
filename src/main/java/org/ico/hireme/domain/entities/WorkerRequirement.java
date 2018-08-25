@@ -28,22 +28,18 @@ public class WorkerRequirement {
     private BigDecimal expectedSalary;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
     private Region expectedJobLocation;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
     private WorkTime expectedWorkTime;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
     private Position expectedStartingPosition;
 
     @Size(min=0, max=400)
     private String additionalRequirements;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
     private JobCategory jobCategory;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
