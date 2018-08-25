@@ -22,11 +22,11 @@ public class User implements UserDetails {
     private String id;
 
     @Column(name = "username", nullable = false, unique = true)
-    @Pattern(regexp = "[^<>]+")
+//    @Pattern(regexp = "[^<>]+")
     private String username;
 
     @Column(name = "password", nullable = false)
-    @Pattern(regexp = "[^<>]+")
+//    @Pattern(regexp = "[^<>]+")
     private String password;
 
     private boolean isAccountNonExpired;
