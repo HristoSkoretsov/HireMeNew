@@ -42,7 +42,7 @@ public class ApplicationSecurityConfiguration
                 .authorizeRequests()
                 .antMatchers("/", "/login", "/register").permitAll()
                 .antMatchers("/css/**", "/js/**").permitAll()
-                .antMatchers("/delete-user", "/create-company", "/all-companies", "/delete-company").hasAuthority("ADMIN")
+                .antMatchers("/delete-user", "/create-company", "/delete-company").hasAuthority("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

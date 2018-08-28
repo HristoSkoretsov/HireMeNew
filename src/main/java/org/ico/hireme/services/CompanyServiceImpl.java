@@ -4,9 +4,11 @@ import org.ico.hireme.domain.entities.Company;
 import org.ico.hireme.models.binding.CompanyBindingModel;
 import org.ico.hireme.models.service.CompanyServiceModel;
 import org.ico.hireme.repositories.CompanyRepository;
+import org.ico.hireme.web.controllers.BaseController;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.Optional;
 import java.util.Set;
@@ -26,8 +28,10 @@ public class CompanyServiceImpl implements CompanyService{
 
     @Override
     public boolean createUser(CompanyBindingModel companyBindingModel) {
+
         Company companyEntity = this.modelMapper.map(companyBindingModel, Company.class);
-        return this.companyRepository.saveAndFlush(companyEntity)!=null;
+            return this.companyRepository.saveAndFlush(companyEntity)!=null;
+
     }
 
     @Override

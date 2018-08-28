@@ -13,11 +13,13 @@ import org.ico.hireme.services.WorkerRequirementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Set;
 
@@ -51,7 +53,12 @@ public class UserController extends BaseController {
 
     @PostMapping("/register")
     @PreAuthorize("isAnonymous()")
-    public ModelAndView registerConfirm(@ModelAttribute UserRegisterBindingModel userRegisterBindingModel, @RequestParam(name = "g-recaptcha-response") String gRecaptchaResponse, HttpServletRequest request) {
+    public ModelAndView registerConfirm(@ModelAttribute @Valid UserRegisterBindingModel userRegisterBindingModel,
+                                        @RequestParam(name = "g-recaptcha-response") String gRecaptchaResponse,
+                                        HttpServletRequest request, BindingResult binding) {
+        if(binding.hasErrors()){
+            return this.view("error/user-error");
+        }
 
         if (this.recaptchaService
                 .verifyRecaptcha(request.getRemoteAddr()
@@ -70,8 +77,14 @@ public class UserController extends BaseController {
                 return this.view("error/user-error");
             }
         }
+
+        try{
             this.userService.createUser(userRegisterBindingModel);
-            return this.redirect("/login");
+            return this.redirect("/login");}
+            catch (Exception e)
+        {
+            return this.view("error/user-error");
+        }
 
     }
 

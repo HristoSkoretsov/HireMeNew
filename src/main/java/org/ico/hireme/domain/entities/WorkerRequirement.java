@@ -24,7 +24,7 @@ public class WorkerRequirement {
     @Column(name = "id", nullable = false, unique = true, updatable = false)
     private String id;
 
-    @Range(min = 0, max = 100000)
+//    @Range(min = 0, max = 100000)
     private BigDecimal expectedSalary;
 
     @Enumerated(EnumType.STRING)
@@ -36,7 +36,7 @@ public class WorkerRequirement {
     @Enumerated(EnumType.STRING)
     private Position expectedStartingPosition;
 
-    @Size(min=0, max=400)
+//    @Size(min=0, max=400)
     private String additionalRequirements;
 
     @Enumerated(EnumType.STRING)

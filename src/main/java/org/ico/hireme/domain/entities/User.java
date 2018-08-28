@@ -1,11 +1,9 @@
 package org.ico.hireme.domain.entities;
 
-import com.github.rkpunjal.sqlsafe.SQLInjectionSafe;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import javax.validation.constraints.Pattern;
 import java.util.Set;
 
 @Entity
@@ -22,11 +20,9 @@ public class User implements UserDetails {
     private String id;
 
     @Column(name = "username", nullable = false, unique = true)
-//    @Pattern(regexp = "[^<>]+")
     private String username;
 
     @Column(name = "password", nullable = false)
-//    @Pattern(regexp = "[^<>]+")
     private String password;
 
     private boolean isAccountNonExpired;

@@ -9,6 +9,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
 import java.io.IOException;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -42,11 +44,16 @@ public class CompanyController extends BaseController {
 
     @PostMapping("/create-company")
     @PreAuthorize("isAuthenticated()")
-    public ModelAndView createProcess(ModelAndView model, @ModelAttribute CompanyBindingModel companyBindingModel) throws IOException {
+    public ModelAndView createProcess(ModelAndView model,
+                                      @ModelAttribute @Valid CompanyBindingModel companyBindingModel,
+                                      BindingResult binding) throws IOException {
 
         if (!companyBindingModel.getEventPicture().isEmpty()) {
             String pictureUrl = this.cloudinaryService.uploadImage(companyBindingModel.getEventPicture());
             companyBindingModel.setImage(pictureUrl);
+        }
+        if(binding.hasErrors()){
+            return this.view("error/company-error");
         }
         try {
             this.companyService.createUser(companyBindingModel);

@@ -22,27 +22,27 @@ public class WorkerProfile {
     private String id;
 
     @Column(name = "first_name")
-    @Size(min = 2, max = 15)
+//    @Size(min = 2, max = 15)
 //    @Pattern(regexp = "[^<>]+")
     private String firstName;
 
     @Column(name = "last_name")
-    @Size(min = 2, max = 15)
+//    @Size(min = 2, max = 15)
     //@Pattern(regexp = "[^<>]+")
     private String lastName;
 
 
     private Integer age;
 
-    @Size(max = 50)
+//    @Size(max = 50)
     //@Pattern(regexp = "[^<>]+")
-    @Nullable
+//    @Nullable
     private String email;
 
     private String image;
 
     //@Pattern(regexp = "[0-9\\-+\\/ \\\\]+")
-    @Size(max = 15)
+//    @Size(max = 15)
     @Column(name = "telephone_number", nullable = true)
     private String telephoneNumber;
 
@@ -51,21 +51,21 @@ public class WorkerProfile {
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
-    @Size(max = 100)
+//    @Size(max = 100)
     //@Pattern(regexp = "[^<>]+")
-    @Nullable
+//    @Nullable
     private String currentJob;
 
-    @Size(max = 100)
+//    @Size(max = 100)
     //@Pattern(regexp = "^[^<>]+$")
     private String previousJob1;
 
-    @Size(max = 100)
+//    @Size(max = 100)
     //@Pattern(regexp = "[^<>]+")
 
     private String previousJob2;
 
-    @Size(max = 400)
+//    @Size(max = 400)
     //@Pattern(regexp = "[^<>]+")
     private String additionalInformation;
 

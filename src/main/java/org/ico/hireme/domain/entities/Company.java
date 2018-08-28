@@ -25,17 +25,12 @@ public class Company {
    private String id;
 
    @Column(name = "company_name", nullable = false, unique = true)
-   @Size(min=1, max=100)
-   @Pattern(regexp = "[^<>]+")
    private String companyName;
 
    @Column(name = "email")
-   @Size(max = 30)
    private String email;
 
    @Column(name = "telephone_number", nullable = false)
-   @Size(min = 5, max = 15)
-   @Pattern(regexp = "[0-9-+\\/ ]+")
    private String telephoneNumber;
 
    @Column(name = "image")
@@ -44,8 +39,6 @@ public class Company {
    @Enumerated(EnumType.STRING)
    private Region region;
 
-   @Size(min= 0, max = 300)
-   //@Pattern(regexp = "[^<>]+")
    private String additionalInformation;
 
    public Company() {
