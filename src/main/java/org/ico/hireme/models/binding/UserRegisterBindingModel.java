@@ -4,13 +4,13 @@ import javax.validation.constraints.Pattern;
 
 public class UserRegisterBindingModel {
 
-    //@Pattern(regexp = "[^<>]+")
+    //@Pattern(regexp = "[^<>]*")
     private String username;
 
-    //@Pattern(regexp = "[^<>]+")
+    //@Pattern(regexp = "[^<>]*")
     private String password;
 
-    //@Pattern(regexp = "[^<>]+")
+    //@Pattern(regexp = "[^<>]*")
     private String confirmPassword;
 
     public UserRegisterBindingModel() {

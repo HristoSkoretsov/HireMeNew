@@ -8,24 +8,24 @@ import javax.validation.constraints.Size;
 
 public class CompanyBindingModel {
 
-//    @Size(min=1, max=100)
-//    @Pattern(regexp = "[^<>]")
+    @Size(min=1, max=100)
+    @Pattern(regexp = "[^<>]*")
     private String companyName;
 
-//    @Size(max = 30)
-//    @Pattern(regexp = "[^<>]*")
+    @Size(max = 30)
+    @Pattern(regexp = "[^<>]*")
     private String email;
 
-//    @Size(min = 5, max = 15)
-//    @Pattern(regexp = "[0-9-+\\/ ]+")
+    @Size(min = 5, max = 15)
+    @Pattern(regexp = "[0-9-+\\/ ]*")
     private String telephoneNumber;
 
     private String image;
 
     private Region region;
 
-//    @Size(max = 300)
-//    @Pattern(regexp = "[^<>]*")
+    @Size(max = 300)
+    @Pattern(regexp = "[^<>]*")
     private String additionalInformation;
 
     private MultipartFile eventPicture;

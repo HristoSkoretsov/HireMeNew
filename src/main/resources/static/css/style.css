@@ -76,6 +76,8 @@ table {
     width: 100%;
     overflow: scroll;
     text-align: center;
+    table-layout: fixed;
+    word-wrap: break-word;
 
 }
 

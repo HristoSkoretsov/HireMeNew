@@ -1,14 +1,20 @@
 package org.ico.hireme.models.binding;
 
+import org.hibernate.validator.constraints.Range;
 import org.ico.hireme.domain.enums.JobCategory;
 import org.ico.hireme.domain.enums.Position;
 import org.ico.hireme.domain.enums.Region;
 import org.ico.hireme.domain.enums.WorkTime;
+import org.springframework.lang.Nullable;
 
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 
 public class WorkerRequirementBindingModel {
 
+    @Range(min = 0, max = 100000)
+    @Nullable
     private BigDecimal expectedSalary;
 
     private Region expectedJobLocation;
@@ -17,6 +23,9 @@ public class WorkerRequirementBindingModel {
 
     private Position expectedStartingPosition;
 
+    @Pattern(regexp = "[^<>]+")
+    @Size(max = 400)
+    @Nullable
      private String additionalRequirements;
 
     private JobCategory jobCategory;

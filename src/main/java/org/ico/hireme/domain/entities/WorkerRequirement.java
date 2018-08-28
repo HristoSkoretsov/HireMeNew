@@ -1,14 +1,12 @@
 package org.ico.hireme.domain.entities;
 
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.validator.constraints.Range;
 import org.ico.hireme.domain.enums.JobCategory;
 import org.ico.hireme.domain.enums.Position;
 import org.ico.hireme.domain.enums.Region;
 import org.ico.hireme.domain.enums.WorkTime;
 
 import javax.persistence.*;
-import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 
 @Entity
@@ -24,7 +22,6 @@ public class WorkerRequirement {
     @Column(name = "id", nullable = false, unique = true, updatable = false)
     private String id;
 
-//    @Range(min = 0, max = 100000)
     private BigDecimal expectedSalary;
 
     @Enumerated(EnumType.STRING)
@@ -36,7 +33,6 @@ public class WorkerRequirement {
     @Enumerated(EnumType.STRING)
     private Position expectedStartingPosition;
 
-//    @Size(min=0, max=400)
     private String additionalRequirements;
 
     @Enumerated(EnumType.STRING)
@@ -48,7 +44,6 @@ public class WorkerRequirement {
 
     public WorkerRequirement() {
     }
-
 
     public String getId() {
         return id;

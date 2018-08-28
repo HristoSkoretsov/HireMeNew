@@ -10,11 +10,13 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
 import java.io.IOException;
 
 @Controller
@@ -45,10 +47,15 @@ public class WorkerProfileController extends BaseController {
 
     @PostMapping("/user-profile")
     @PreAuthorize("isAuthenticated()")
-    public ModelAndView editProfile(WorkerProfile worker, @ModelAttribute WorkerProfileBindingModel workerProfileBindingModel) throws IOException {
+    public ModelAndView editProfile(WorkerProfile worker, @Valid @ModelAttribute ("workerProfileBindingModel") WorkerProfileBindingModel workerProfileBindingModel
+    , BindingResult binding) throws IOException {
 
         WorkerProfile workerProfile = workerProfileService.findById(this.userService.getCurrentUser().getId()).orElse(null);
         assert workerProfile != null;
+
+        if(binding.hasErrors()){
+            return this.view("error/user-profile-error");
+        }
 
         try {
 

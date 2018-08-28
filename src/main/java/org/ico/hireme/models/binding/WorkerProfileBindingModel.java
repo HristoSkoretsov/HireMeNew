@@ -1,33 +1,62 @@
 package org.ico.hireme.models.binding;
 
+import org.hibernate.validator.constraints.Range;
 import org.ico.hireme.domain.entities.User;
 import org.ico.hireme.domain.enums.Gender;
+import org.springframework.lang.Nullable;
 import org.springframework.web.multipart.MultipartFile;
+
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 public class WorkerProfileBindingModel {
 
+    @Size(min = 2, max = 15)
+    @Pattern(regexp = "[^<>]*")
     private String firstName;
 
+    @Size(min = 2, max = 15)
+    @Pattern(regexp = "[^<>]*")
     private String lastName;
 
+    @Range(min = 0, max = 100)
+    @Nullable
     private Integer age;
 
+    @Size(max = 50)
+    @Pattern(regexp = "[^<>]*")
+    @Nullable
     private String email;
 
     private MultipartFile eventPicture;
 
+    @Pattern(regexp = "[0-9\\-+\\/ \\\\]*")
+    @Size(max = 15)
+    @Nullable
     private String telephoneNumber;
 
     private Long views;
 
     private Gender gender;
 
+    @Size(max = 100)
+    @Pattern(regexp = "[^<>]*")
+    @Nullable
     private String currentJob;
 
+    @Size(max = 100)
+    @Pattern(regexp = "[^<>]*")
+    @Nullable
     private String previousJob1;
 
+    @Size(max = 100)
+    @Pattern(regexp = "[^<>]*")
+    @Nullable
     private String previousJob2;
 
+    @Size(max = 400)
+    @Pattern(regexp = "[^<>]*")
+    @Nullable
     private String additionalInformation;
 
     private User user;

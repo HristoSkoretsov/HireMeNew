@@ -45,7 +45,7 @@ public class CompanyController extends BaseController {
     @PostMapping("/create-company")
     @PreAuthorize("isAuthenticated()")
     public ModelAndView createProcess(ModelAndView model,
-                                      @ModelAttribute @Valid CompanyBindingModel companyBindingModel,
+                                      @Valid @ModelAttribute CompanyBindingModel companyBindingModel,
                                       BindingResult binding) throws IOException {
 
         if (!companyBindingModel.getEventPicture().isEmpty()) {

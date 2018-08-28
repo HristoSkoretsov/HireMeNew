@@ -53,7 +53,7 @@ public class UserController extends BaseController {
 
     @PostMapping("/register")
     @PreAuthorize("isAnonymous()")
-    public ModelAndView registerConfirm(@ModelAttribute @Valid UserRegisterBindingModel userRegisterBindingModel,
+    public ModelAndView registerConfirm(@Valid @ModelAttribute ("userRegisterBindingModel")UserRegisterBindingModel userRegisterBindingModel,
                                         @RequestParam(name = "g-recaptcha-response") String gRecaptchaResponse,
                                         HttpServletRequest request, BindingResult binding) {
         if(binding.hasErrors()){
