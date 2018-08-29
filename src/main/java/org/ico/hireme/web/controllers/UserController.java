@@ -47,7 +47,8 @@ public class UserController extends BaseController {
 
     @GetMapping("/register")
     @PreAuthorize("isAnonymous()")
-    public ModelAndView register() {
+    public ModelAndView register(ModelAndView modelAndView) {
+
         return this.view("register");
     }
 

@@ -1,16 +1,11 @@
 package org.ico.hireme.models.binding;
 
-import javax.validation.constraints.Pattern;
-
 public class UserRegisterBindingModel {
 
-    //@Pattern(regexp = "[^<>]*")
     private String username;
 
-    //@Pattern(regexp = "[^<>]*")
     private String password;
 
-    //@Pattern(regexp = "[^<>]*")
     private String confirmPassword;
 
     public UserRegisterBindingModel() {
