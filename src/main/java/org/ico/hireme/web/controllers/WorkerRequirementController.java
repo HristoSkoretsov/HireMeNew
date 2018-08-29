@@ -44,8 +44,8 @@ public class WorkerRequirementController extends BaseController {
 
     @PostMapping("/user-requirement")
     @PreAuthorize("isAuthenticated()")
-    public ModelAndView editProfile(WorkerRequirementBindingModel worker,  @Valid @ModelAttribute ("workerRequirement") WorkerRequirementBindingModel workerRequirementBinding,
-                                    BindingResult binding) {
+    public ModelAndView editProfile(@Valid @ModelAttribute ("workerRequirement") WorkerRequirementBindingModel workerRequirementBinding,
+                                    BindingResult binding, WorkerRequirementBindingModel worker) {
 
         if(binding.hasErrors()){
             return this.view("error/user-requirement-error");

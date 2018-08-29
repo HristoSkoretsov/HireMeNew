@@ -23,7 +23,7 @@ public class WorkerRequirementBindingModel {
 
     private Position expectedStartingPosition;
 
-    @Pattern(regexp = "[^<>]+")
+    @Pattern(regexp = "[^<>]*")
     @Size(max = 400)
     @Nullable
      private String additionalRequirements;
